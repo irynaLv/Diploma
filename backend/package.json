@@ -1,12 +1,18 @@
 {
-  "name": "application-name",
+  "name": "Diploma",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "3.5.1",
-    "jade": "*"
-  }
+	"jade": "*",
+    "express": ">=3.x",
+    "mongodb": "~1.3.9",
+    "validator": "~1.1.3"
+  },
+  "devDependencies": {},
+  "repository": "",
+  "author": "Iryna Kushnir",
+  "license": "BSD"
 }

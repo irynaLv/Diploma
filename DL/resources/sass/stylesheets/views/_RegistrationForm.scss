@@ -1,0 +1,90 @@
+.registration-panel{
+  border-radius: 0 !important;
+  background-color: #000 !important;
+  .x-panel-inner{
+    background-color: #141414 !important;
+    border-radius: 0 !important;
+
+    .input-form{
+      margin: .3em;
+      //font-size: .85em;
+      .x-form-fieldset-title{
+        margin: .3em;
+        text-shadow: none;
+        .x-innerhtml{
+          color: #FD8400;
+          font-size: 1.1em;
+          text-align: center;
+        }
+      }
+      .x-form-fieldset-inner{
+        border-radius: 0;
+        background: #000;
+        border: none;
+        .x-field{
+          margin: 0.3em;
+          height: 1.5em;
+          min-height: 1.5em;
+          border-radius: 0;
+          border: none;
+          .x-form-label{
+            min-height: 1.5em;
+            border-radius: 0;
+            padding: .2em;
+            color: #FFF;
+            background-color:#141414;
+            border: none;
+            text-shadow: none;
+          }
+          .x-input-el{
+            min-height: 1.4em;
+          }
+        }
+        .x-component-outer{
+          .x-input-el{
+            padding: 0 !important;
+          }
+        }
+      }
+      .sex-title{
+        color: #fff;
+        border-right: 2px solid;
+        .x-inner{
+          padding: .4em;
+          background-color:#141414;
+          .x-innerhtml{
+            color: #fff;
+          }
+        }
+
+      }
+      .sex-container{
+        margin: .3em;
+      }
+      .radiobutton-container{
+        border-radius: 0;
+        .x-field-radio{
+          border-radius: 0;
+          font-size: .8em;
+          border: none;
+          .x-form-label{
+            //width: 17% !important;
+            color: #fff;
+            background-color:#141414;
+            border-radius: 0;
+            border: none;
+          }
+          .x-field-input{
+            //width: 2.5em;
+            //min-width: 2em;
+          }
+        }
+      }
+    }
+  }
+  .submit-btn{
+    border: none;
+    left: 11em;
+    margin-bottom: .2em;
+  }
+}

@@ -29,6 +29,7 @@ Ext.application({
 //	autoCreateViewport: true,
 
     requires: [
+        'Ext.Ajax',
         'Ext.MessageBox'
     ],
 
@@ -43,6 +44,8 @@ Ext.application({
 	
 	controllers: [
             // TODO: add controllers here
+
+        'RegistrationForm'
 //            'Main'
     ],
 		
@@ -76,6 +79,15 @@ Ext.application({
 
     launch: function() {
         // Destroy the #appLoadingIndicator element
+        Ext.Ajax.request({
+            url: 'http://localhost:3000/users',
+
+            success: function(response){
+                var text = response.responseText;
+                // process server response here
+            }
+        });
+
         Ext.fly('appLoadingIndicator').destroy();
 //
         // Initialize the main view

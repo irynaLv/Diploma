@@ -4,12 +4,24 @@
  */
 
 var express = require('express');
+var mongoose = require('mongoose');
 var routes = require('./routes');
 var user = require('./routes/user');
+var login = require('./routes/login');
 var http = require('http');
 var path = require('path');
 
 var app = express();
+
+mongoose.connect('mongodb://localhost:27017/users');
+
+var db = mongoose.connection;
+
+var userSchema = mongoose.Schema({
+    login: String
+});
+
+var User = mongoose.model('User', userSchema);
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -23,6 +35,12 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.all('*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+});
+
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
@@ -30,7 +48,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
-app.post('/login', routes.login);
+app.post('/login', login.login);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

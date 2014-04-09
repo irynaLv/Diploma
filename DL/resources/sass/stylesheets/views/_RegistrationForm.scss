@@ -83,8 +83,13 @@
     }
   }
   .submit-btn{
-    border: none;
-    left: 11em;
+    border: 1px solid #FFA500;
+    left: 15em;
+    margin-bottom: .2em;
+  }
+  .cancel-btn{
+    border: 1px solid #FFA500;
+    //left: 15em;
     margin-bottom: .2em;
   }
 }

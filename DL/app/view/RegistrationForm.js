@@ -12,7 +12,7 @@ Ext.define('DL.view.RegistrationForm', {
             align: 'left'
         },
         modal: true,
-        hideOnMaskTap:true,
+//        hideOnMaskTap:true,
         cls: 'registration-panel',
 
         items: [
@@ -24,42 +24,52 @@ Ext.define('DL.view.RegistrationForm', {
                     {
                         xtype: 'textfield',
                         label: 'Ім\'я',
-                        name: 'login'
+                        itemId: 'name',
+//                        listeners : {
+//                            scope : this,
+//                            blur: this.checkNameField
+//                        }
                     },
                     {
                         xtype: 'textfield',
                         label: 'Прізвище',
-                        name: 'login'
+                        itemId: 'surname'
                     },
                     {
                         xtype: 'emailfield',
                         label: 'Email',
-                        name: 'email'
+                        itemId: 'email'
                     },
                     {
                         xtype: 'emailfield',
                         label: 'Повторіть email',
-                        name: 'email'
+                        itemId: 'checkEmail'
                     },
                     {
                         xtype: 'passwordfield',
                         label: 'Пароль',
-                        name: 'password'
+                        itemId: 'password'
                     },
                     {
                         xtype: 'passwordfield',
                         label: 'Повторіть пароль',
-                        name: 'password'
+                        itemId: 'checkPassword'
                     },
                     {
                         xtype: 'datepickerfield',
-                        label: 'Birthday',
-                        name: 'birthday',
+                        label: 'День народження',
+                        itemId: 'birthday',
+                        picker: {
+                            yearFrom: 1940,
+                            yearTo  : new Date().getFullYear()
+
+                        },
                         value: new Date()
                     },
                     {
                         xtype: 'selectfield',
                         label: 'Статус',
+                        itemId: 'status',
                         options: [
                             {text: 'Студент',  value: 'first'},
                             {text: 'Викладач', value: 'second'},
@@ -106,13 +116,26 @@ Ext.define('DL.view.RegistrationForm', {
 
             },
             {
-                xtype: 'button',
-                text: 'OK',
-                cls: 'submit-btn',
-                itemId: 'submit-btn',
-                handler: 'submitLoginForm',
-                width:'30%'
+                xtype: 'container',
+                layout: 'hbox',
+                items:[
+                    {
+                        xtype: 'button',
+                        text: 'X',
+                        cls: 'cancel-btn',
+                        itemId: 'cancel-btn'
+//                        width:'30%'
+                    },
+                    {
+                        xtype: 'button',
+                        text: 'OK',
+                        cls: 'submit-btn',
+                        itemId: 'submit-btn'
+//                        width:'30%'
+                    }
+                ]
             }
+
 
 
         ]
@@ -122,9 +145,35 @@ Ext.define('DL.view.RegistrationForm', {
         this.callParent();
         this.down('#submit-btn').setScope(this);
         this.down('#submit-btn').setHandler(this.submitRegistrationForm);
+        this.down('#cancel-btn').setScope(this);
+        this.down('#cancel-btn').setHandler(this.closeRegistrationForm);
+//       this.down("#name").element.on('blur', this.checkNameField(), this);
+        var surname = this.down("#surname").getValue();
+        var email = this.down("#email").getValue();
+        var checkEmail = this.down("#checkEmail").getValue();
+        var password = this.down("#password").getValue();
+        var checkPassword = this.down("#checkPassword").getValue();
+        var birthday = this.down("#birthday").getValue();
+        var status = this.down("#status").getOptions();
 
     },
-    submitRegistrationForm: function submitLoginForm(){
+    submitRegistrationForm: function (){
+        var name = this.down("#name").getValue();
+        var surname = this.down("#surname").getValue();
+        var email = this.down("#email").getValue();
+        var checkEmail = this.down("#checkEmail").getValue();
+        var password = this.down("#password").getValue();
+        var checkPassword = this.down("#checkPassword").getValue();
+        var birthday = this.down("#birthday").getValue();
+        var status = this.down("#status").getOptions();
+        console.log(name,surname, email, checkEmail, password, checkPassword, birthday, status )
         console.log('Submit Registration Form');
+    },
+
+    closeRegistrationForm:function(){
+       this.destroy();
+    },
+    checkNameField:function(el, e){
+       console.log(arguments)
     }
 })

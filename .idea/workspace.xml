@@ -2,20 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3aa11d4a-3f02-4349-859a-eb96e1fa9ee9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DL/app/controller/RegistrationForm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DL/app/view/RegistrationForm.js" afterPath="$PROJECT_DIR$/DL/app/view/RegistrationForm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DL/resources/sass/stylesheets/views/_RegistrationForm.scss" afterPath="$PROJECT_DIR$/DL/resources/sass/stylesheets/views/_RegistrationForm.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DL/app.js" afterPath="$PROJECT_DIR$/DL/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/app.js" afterPath="$PROJECT_DIR$/backend/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/.idea/runConfigurations/app_js.xml" afterPath="$PROJECT_DIR$/backend/.idea/runConfigurations/app_js.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/package.json" afterPath="$PROJECT_DIR$/backend/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/routes/user.js" afterPath="$PROJECT_DIR$/backend/routes/user.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DL/.idea/workspace.xml" afterPath="$PROJECT_DIR$/DL/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/.idea/workspace.xml" afterPath="$PROJECT_DIR$/backend/.idea/workspace.xml" />
     </list>
     <ignored path="DL.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="3aa11d4a-3f02-4349-859a-eb96e1fa9ee9" time="1396971827741" ignored="false" />
+    <file path="/Dummy.txt" changelist="3aa11d4a-3f02-4349-859a-eb96e1fa9ee9" time="1397064255628" ignored="false" />
     <file path="/RegistrationForm.js" changelist="3aa11d4a-3f02-4349-859a-eb96e1fa9ee9" time="1396975456476" ignored="false" />
     <file path="/*.regexp" changelist="3aa11d4a-3f02-4349-859a-eb96e1fa9ee9" time="1396976705531" ignored="false" />
     <file path="/_RegistrationForm.scss" changelist="3aa11d4a-3f02-4349-859a-eb96e1fa9ee9" time="1396974521960" ignored="false" />
@@ -44,7 +39,7 @@
       <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DL/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="87" column="69" selection-start="2179" selection-end="2179" vertical-scroll-proportion="0.4678261">
+            <state line="87" column="69" selection-start="2179" selection-end="2179" vertical-scroll-proportion="0.4742268">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -65,9 +60,7 @@
         <entry file="file://$PROJECT_DIR$/backend/routes/login.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="22" column="38" selection-start="322" selection-end="322" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -84,7 +77,7 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="28" selection-start="1218" selection-end="1218" vertical-scroll-proportion="0.0">
+            <state line="26" column="0" selection-start="454" selection-end="454" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -155,6 +148,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -221,16 +215,27 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="vcs.Git" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="last_opened_file_path" value="D:/sandbox/CoPilotMobileWeb/Front-end" />
+    <property name="FullScreen" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+  </component>
+  <component name="PublishConfig">
+    <servers>
+      <server id="0da44f52-c0c6-4a63-9abe-26a687a90efb">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </server>
+    </servers>
   </component>
   <component name="RunManager">
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
@@ -274,13 +279,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32998884" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24934107" sideWeight="0.67001116" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24934107" sideWeight="0.67001116" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -290,6 +294,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32998884" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -365,72 +370,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DL/resources/sass/config.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DL/touch/resources/themes/vendor/compass-recipes/lib/compass-recipes/sass_extensions.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DL/touch/resources/themes/vendor/compass-recipes/lib/compass-recipes.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DL/touch/resources/themes/vendor/compass-recipes/stylesheets/_recipes.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DL/touch/resources/themes/vendor/compass-recipes/stylesheets/recipes/_background.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="66" selection-start="521" selection-end="521" vertical-scroll-proportion="0.35355285">
-          <folding />
-        </state>
+        <state line="12" column="66" selection-start="521" selection-end="521" vertical-scroll-proportion="0.35355285" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DL/touch/resources/themes/vendor/compass-recipes/stylesheets/recipes/background/_blueprint-grid.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="68" selection-start="1241" selection-end="1241" vertical-scroll-proportion="1.1086956">
-          <folding />
-        </state>
+        <state line="36" column="68" selection-start="1241" selection-end="1241" vertical-scroll-proportion="1.1086956" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DL/touch/resources/themes/stylesheets/sencha-touch/base/mixins/_Class.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="269" column="18" selection-start="8778" selection-end="8778" vertical-scroll-proportion="-4.20471">
-          <folding />
-        </state>
+        <state line="269" column="18" selection-start="8778" selection-end="8778" vertical-scroll-proportion="-4.20471" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DL/touch/resources/themes/compass_init.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DL/touch/resources/themes/lib/theme_images.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DL/touch/resources/themes/vendor/compass-recipes/config.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="83" selection-start="186" selection-end="186" vertical-scroll-proportion="0.32409012">
-          <folding />
-        </state>
+        <state line="11" column="83" selection-start="186" selection-end="186" vertical-scroll-proportion="0.32409012" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/routes/user.js">
@@ -442,7 +427,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="28" selection-start="1218" selection-end="1218" vertical-scroll-proportion="0.0">
+        <state line="26" column="0" selection-start="454" selection-end="454" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -457,15 +442,13 @@
     <entry file="file://$PROJECT_DIR$/backend/routes/login.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="38" selection-start="322" selection-end="322" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DL/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="69" selection-start="2179" selection-end="2179" vertical-scroll-proportion="0.4678261">
+        <state line="87" column="69" selection-start="2179" selection-end="2179" vertical-scroll-proportion="0.4742268">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>

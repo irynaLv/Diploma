@@ -23,8 +23,13 @@ Ext.define('DL.view.RegistrationForm', {
                 items: [
                     {
                         xtype: 'textfield',
+                        label: 'Username',
+                        itemId: 'username'
+                    },
+                    {
+                        xtype: 'textfield',
                         label: 'Ім\'я',
-                        itemId: 'name',
+                        itemId: 'name'
 //                        listeners : {
 //                            scope : this,
 //                            blur: this.checkNameField
@@ -149,6 +154,7 @@ Ext.define('DL.view.RegistrationForm', {
         this.down('#cancel-btn').setHandler(this.closeRegistrationForm);
 //       this.down("#name").element.on('blur', this.checkNameField(), this);
         var surname = this.down("#surname").getValue();
+        var surname = this.down("#username").getValue();
         var email = this.down("#email").getValue();
         var checkEmail = this.down("#checkEmail").getValue();
         var password = this.down("#password").getValue();
@@ -167,6 +173,23 @@ Ext.define('DL.view.RegistrationForm', {
         var birthday = this.down("#birthday").getValue();
         var status = this.down("#status").getOptions();
         console.log(name,surname, email, checkEmail, password, checkPassword, birthday, status )
+        Ext.Ajax.request({
+            method: 'POST',
+            url: 'http://localhost:3000/register',
+            params: {
+                username: name,
+                password: password,
+                firstName:name,
+                secondName: surname,
+                email: email,
+                role: 1,
+                birthDay: birthday
+            },
+            success: function(response){
+                var text = response.responseText;
+                // process server response here
+            }
+        })
         console.log('Submit Registration Form');
     },
 

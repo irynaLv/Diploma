@@ -79,14 +79,23 @@ Ext.application({
 
     launch: function() {
         // Destroy the #appLoadingIndicator element
-        Ext.Ajax.request({
-            url: 'http://localhost:3000/users',
-
-            success: function(response){
-                var text = response.responseText;
-                // process server response here
-            }
-        });
+//        Ext.Ajax.request({
+//            method: 'POST',
+//            url: 'http://localhost:3000/register',
+//            params: {
+//                username: 'test1',
+//                password: 'test1',
+//                firstName:'test1',
+//                secondName: 'test1',
+//                email: 'test1@mail.com',
+//                role: 1,
+//                birthDay: new Date()
+//            },
+//            success: function(response){
+//                var text = response.responseText;
+//                // process server response here
+//            }
+//        });
 
         Ext.fly('appLoadingIndicator').destroy();
 //

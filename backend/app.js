@@ -57,7 +57,7 @@ passport.deserializeUser(function(id, done) {
 
 
 var db = mongoose.createConnection('mongodb://localhost:27017/DL');
-db.on('error', console.error.bind(console, 'connection error:'));
+//db.on('error', console.error.bind(console, 'connection error:'));
 
 mongoose.connection;
 

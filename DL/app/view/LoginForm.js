@@ -23,13 +23,13 @@ Ext.define('DL.view.LoginForm', {
                 items: [
                     {
                         xtype: 'textfield',
-                        label: 'Ім\'я',
-                        name: 'login'
+                        label: 'Email',
+                        itemId: 'email'
                     },
                     {
                         xtype: 'passwordfield',
                         label: 'Пароль',
-                        name: 'password'
+                        itemId: 'password'
                     }
 
                 ]
@@ -44,29 +44,7 @@ Ext.define('DL.view.LoginForm', {
                 width:'30%'
             }
 
-//
-//                // Reset and Submit buttons
-//                buttons: [{
-//                    text: 'Login',
-////                    formBind: true, //only enabled once the form is valid
-//                    disabled: true
-////                    handler: function() {
-////                        var form = this.up('form').getForm();
-////                        if (form.isValid()) {
-////                            form.submit({
-////                                success: function(form, action) {
-////                                    Ext.Msg.alert('Success', action.result.msg);
-////                                },
-////                                failure: function(form, action) {
-////                                    Ext.Msg.alert('Failed', action.result.msg);
-////                                }
-////                            });
-////                        }
-////                    }
-//                }]
-////                renderTo: Ext.getBody()
-//
-//            }
+
         ]
     },
 
@@ -77,6 +55,24 @@ Ext.define('DL.view.LoginForm', {
 
     },
     submitLoginForm: function submitLoginForm(){
+        var email = this.down('#email').getValue();
+        var password = this.down('#password').getValue();
+        Ext.Ajax.request({
+            method: 'POST',
+            url: 'http://localhost:3000/login',
+            params: {
+                password: password,
+                email: email
+            },
+            success: function(response){
+                var text = response.responseText;
+                // process server response here
+//                me.closeRegistrationForm()
+            },
+            error:function(){
+//                me.closeRegistrationForm()
+            }
+        })
         console.log('Submit Login Form');
     }
 })

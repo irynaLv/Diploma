@@ -21,25 +21,7 @@ Ext.define('DL.view.RegistrationForm', {
                 title: 'Реєстраційна форма',
                 cls: 'input-form',
                 items: [
-                    {
-                        xtype: 'textfield',
-                        label: 'Username',
-                        itemId: 'username'
-                    },
-                    {
-                        xtype: 'textfield',
-                        label: 'Ім\'я',
-                        itemId: 'name'
-//                        listeners : {
-//                            scope : this,
-//                            blur: this.checkNameField
-//                        }
-                    },
-                    {
-                        xtype: 'textfield',
-                        label: 'Прізвище',
-                        itemId: 'surname'
-                    },
+
                     {
                         xtype: 'emailfield',
                         label: 'Email',
@@ -59,6 +41,20 @@ Ext.define('DL.view.RegistrationForm', {
                         xtype: 'passwordfield',
                         label: 'Повторіть пароль',
                         itemId: 'checkPassword'
+                    },
+                    {
+                        xtype: 'textfield',
+                        label: 'Ім\'я',
+                        itemId: 'name'
+//                        listeners : {
+//                            scope : this,
+//                            blur: this.checkNameField
+//                        }
+                    },
+                    {
+                        xtype: 'textfield',
+                        label: 'Прізвище',
+                        itemId: 'surname'
                     },
                     {
                         xtype: 'datepickerfield',
@@ -81,45 +77,20 @@ Ext.define('DL.view.RegistrationForm', {
                             {text: 'Бухгалтер',  value: 'third'}
                         ]
                     }
-//                    {
-//                        xtype: 'container',
-//                        layout: 'hbox',
-//                        cls: 'sex-container',
-//                        items: [
-//                            {
-//                                xtype: 'container',
-//                                html: 'Стать',
-//                                cls: 'sex-title',
-//                                width: '30%'
-//                            },
-//                            {
-//                            xtype: 'container',
-//                            layout: 'hbox',
-//                            cls: 'radiobutton-container',
-//                            width: '70%',
-//                            items: [
-//                                {
-//                                    xtype: 'radiofield',
-//                                    label: 'Чоловіча',
-//                                    checked: true,
-//                                    width: '50%'
-//                                },
-//                                {
-//                                    xtype: 'radiofield',
-//                                    label: 'Жіноча',
-//                                    width: '50%'
-//                                }
-//                            ]
-//                        }
-//                        ]
-//                    },
-
-
-
 
                 ]
 
             },
+            {
+
+                xtype: 'container',
+                height: '3em',
+                itemId: 'errorMsg',
+                html:'',
+                cls: 'errorPanel'
+
+            },
+
             {
                 xtype: 'container',
                 layout: 'hbox',
@@ -149,30 +120,22 @@ Ext.define('DL.view.RegistrationForm', {
     initialize:function(){
         this.callParent();
         this.down('#submit-btn').setScope(this);
-        this.down('#submit-btn').setHandler(this.submitRegistrationForm);
+        this.down('#submit-btn').setHandler(this.checkRegistrationForm);
         this.down('#cancel-btn').setScope(this);
         this.down('#cancel-btn').setHandler(this.closeRegistrationForm);
-//       this.down("#name").element.on('blur', this.checkNameField(), this);
-        var surname = this.down("#surname").getValue();
-        var surname = this.down("#username").getValue();
-        var email = this.down("#email").getValue();
-        var checkEmail = this.down("#checkEmail").getValue();
-        var password = this.down("#password").getValue();
-        var checkPassword = this.down("#checkPassword").getValue();
-        var birthday = this.down("#birthday").getValue();
-        var status = this.down("#status").getOptions();
+        this.errorMsg = this.down('#errorMsg');
+        this.down("#name").on('keyup', this.checkNameField(), this);
+//        this.down("#surname").on('keyup', this.checkNameField(), this);
+//        this.down("#email").on('keyup', this.checkNameField(), this);
+//        this.down("#checkEmail").on('keyup', this.checkNameField(), this);
+//        this.down("#password").on('keyup', this.checkNameField(), this);
+//        this.down("#checkPassword").on('keyup', this.checkNameField(), this);
+
 
     },
-    submitRegistrationForm: function (){
-        var name = this.down("#name").getValue();
-        var surname = this.down("#surname").getValue();
-        var email = this.down("#email").getValue();
-        var checkEmail = this.down("#checkEmail").getValue();
-        var password = this.down("#password").getValue();
-        var checkPassword = this.down("#checkPassword").getValue();
-        var birthday = this.down("#birthday").getValue();
-        var status = this.down("#status").getOptions();
-        console.log(name,surname, email, checkEmail, password, checkPassword, birthday, status )
+
+    submitRegistrationForm:function(name, surname, email, password, birthday, status){
+        var me = this;
         Ext.Ajax.request({
             method: 'POST',
             url: 'http://localhost:3000/register',
@@ -188,15 +151,45 @@ Ext.define('DL.view.RegistrationForm', {
             success: function(response){
                 var text = response.responseText;
                 // process server response here
+                me.closeRegistrationForm()
+            },
+            error:function(){
+                me.closeRegistrationForm()
             }
         })
-        console.log('Submit Registration Form');
+    },
+
+    checkRegistrationForm: function (){
+        var name = this.down("#name").getValue();
+        var surname = this.down("#surname").getValue();
+        var email = this.down("#email").getValue();
+        var checkEmail = this.down("#checkEmail").getValue();
+        var password = this.down("#password").getValue();
+        var checkPassword = this.down("#checkPassword").getValue();
+        var birthday = this.down("#birthday").getValue();
+        var status = this.down("#status").getOptions();
+        if(email != "" && email != checkEmail){
+            this.errorMsg.setHtml('Введіть коректний email адрес');
+            return
+        }
+        if( password != '' && password != checkPassword){
+            this.errorMsg.setHtml('Введіть коректний пароль')
+            return
+        }
+        if(name !="" && surname !=""){
+           this.submitRegistrationForm(name, surname, email, password, birthday, status);
+            return
+        } else{
+            this.errorMsg.setHtml('Заповніть всі поля')
+        }
+
     },
 
     closeRegistrationForm:function(){
        this.destroy();
     },
     checkNameField:function(el, e){
-       console.log(arguments)
+        this.name = this.down("#name").getValue();
+//       console.log(arguments)
     }
 })

@@ -11,7 +11,7 @@
     <file path="/package.json" changelist="d1b81ed4-074b-4a59-8a52-8542b42d66dd" time="1397152642424" ignored="false" />
     <file path="/Dummy.txt" changelist="d1b81ed4-074b-4a59-8a52-8542b42d66dd" time="1397064255628" ignored="false" />
     <file path="/fragment.js" changelist="d1b81ed4-074b-4a59-8a52-8542b42d66dd" time="1397069416493" ignored="false" />
-    <file path="$PROJECT_DIR$/../DL/app/view/RegistrationForm.js" changelist="d1b81ed4-074b-4a59-8a52-8542b42d66dd" time="1397157637749" ignored="false" />
+    <file path="$PROJECT_DIR$/../DL/app/view/RegistrationForm.js" changelist="d1b81ed4-074b-4a59-8a52-8542b42d66dd" time="1397321964509" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +61,7 @@
       <file leaf-file-name="login.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="80" selection-start="1091" selection-end="1091" vertical-scroll-proportion="0.8791423">
+            <state line="36" column="52" selection-start="721" selection-end="721" vertical-scroll-proportion="0.32783505">
               <folding />
             </state>
           </provider>
@@ -71,9 +71,7 @@
         <entry file="file://$PROJECT_DIR$/models/user.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="41" column="62" selection-start="745" selection-end="745" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#157#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -108,8 +106,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1380" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -137,7 +135,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -200,12 +197,13 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="D:/sandbox/CoPilotMobileWeb/Front-end" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DL" />
   </component>
   <component name="PublishConfig">
     <servers>
@@ -244,17 +242,17 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1380" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11755403" sideWeight="0.6008919" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11707681" sideWeight="0.8735043" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39910814" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12649573" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -345,44 +343,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/lib/utils.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="0" selection-start="2817" selection-end="2817" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="125" column="0" selection-start="2817" selection-end="2817" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/lib/mquery.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1581" column="0" selection-start="38653" selection-end="38653" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="1581" column="0" selection-start="38653" selection-end="38653" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/mongoose/lib/drivers/node-mongodb-native/collection.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="0" selection-start="2723" selection-end="2723" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="105" column="0" selection-start="2723" selection-end="2723" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/mongoose/lib/model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="941" column="0" selection-start="24340" selection-end="24340" vertical-scroll-proportion="0.332">
-          <folding />
-        </state>
+        <state line="941" column="0" selection-start="24340" selection-end="24340" vertical-scroll-proportion="0.332" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/lib/collection/node.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="457" selection-end="457" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="25" column="0" selection-start="457" selection-end="457" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/mongoose/lib/query.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1063" column="109" selection-start="27902" selection-end="27902" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="1063" column="109" selection-start="27902" selection-end="27902" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
@@ -395,9 +381,7 @@
     <entry file="file://$PROJECT_DIR$/models/user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="62" selection-start="745" selection-end="745" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#157#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -417,9 +401,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/mongoose/lib/utils.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="415" column="0" selection-start="8751" selection-end="8751" vertical-scroll-proportion="1.2280701">
-          <folding />
-        </state>
+        <state line="415" column="0" selection-start="8751" selection-end="8751" vertical-scroll-proportion="1.2280701" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
@@ -431,7 +413,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="80" selection-start="1091" selection-end="1091" vertical-scroll-proportion="0.8791423">
+        <state line="36" column="52" selection-start="721" selection-end="721" vertical-scroll-proportion="0.32783505">
           <folding />
         </state>
       </provider>

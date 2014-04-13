@@ -4,7 +4,7 @@
     <list default="true" id="b2f6a8bd-79a4-4b03-bf43-8cddb113dfcb" name="Default" comment="" />
     <ignored path="DL.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="$PROJECT_DIR$/../backend/app.js" changelist="b2f6a8bd-79a4-4b03-bf43-8cddb113dfcb" time="1397154026645" ignored="false" />
+    <file path="$PROJECT_DIR$/../backend/app.js" changelist="b2f6a8bd-79a4-4b03-bf43-8cddb113dfcb" time="1397326365612" ignored="false" />
     <file path="/app.js" changelist="b2f6a8bd-79a4-4b03-bf43-8cddb113dfcb" time="1397151781180" ignored="false" />
     <file path="$PROJECT_DIR$/../backend/routes/user.js" changelist="b2f6a8bd-79a4-4b03-bf43-8cddb113dfcb" time="1397069570222" ignored="false" />
     <file path="/user.js" changelist="b2f6a8bd-79a4-4b03-bf43-8cddb113dfcb" time="1397151415199" ignored="false" />
@@ -12,7 +12,7 @@
     <file path="$PROJECT_DIR$/../backend/models/user.js" changelist="b2f6a8bd-79a4-4b03-bf43-8cddb113dfcb" time="1397151996025" ignored="false" />
     <file path="$PROJECT_DIR$/../backend/routes/login.js" changelist="b2f6a8bd-79a4-4b03-bf43-8cddb113dfcb" time="1397153562524" ignored="false" />
     <file path="/login.js" changelist="b2f6a8bd-79a4-4b03-bf43-8cddb113dfcb" time="1397153562524" ignored="false" />
-    <file path="$PROJECT_DIR$/../backend/package.json" changelist="b2f6a8bd-79a4-4b03-bf43-8cddb113dfcb" time="1397152708929" ignored="false" />
+    <file path="$PROJECT_DIR$/../backend/package.json" changelist="b2f6a8bd-79a4-4b03-bf43-8cddb113dfcb" time="1397326783864" ignored="false" />
     <file path="/package.json" changelist="b2f6a8bd-79a4-4b03-bf43-8cddb113dfcb" time="1397152642424" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +45,7 @@
       <file leaf-file-name="RegistrationForm.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/view/RegistrationForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="87" column="46" selection-start="2755" selection-end="2755" vertical-scroll-proportion="0.030411448">
+            <state line="38" column="72" selection-start="1106" selection-end="1106" vertical-scroll-proportion="0.5901263">
               <folding />
             </state>
           </provider>
@@ -83,8 +83,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1380" />
-    <option name="height" value="744" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -218,13 +218,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1380" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24934107" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14243102" sideWeight="0.9097104" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10068529" sideWeight="0.9097104" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -354,7 +354,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/RegistrationForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="46" selection-start="2755" selection-end="2755" vertical-scroll-proportion="0.030411448">
+        <state line="38" column="72" selection-start="1106" selection-end="1106" vertical-scroll-proportion="0.5901263">
           <folding />
         </state>
       </provider>

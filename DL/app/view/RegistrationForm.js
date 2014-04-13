@@ -21,7 +21,25 @@ Ext.define('DL.view.RegistrationForm', {
                 title: 'Реєстраційна форма',
                 cls: 'input-form',
                 items: [
-
+                    {
+                        xtype: 'textfield',
+                        label: 'Username',
+                        itemId: 'username'
+                    },
+                    {
+                        xtype: 'textfield',
+                        label: 'Ім\'я',
+                        itemId: 'name'
+//                        listeners : {
+//                            scope : this,
+//                            blur: this.checkNameField
+//                        }
+                    },
+                    {
+                        xtype: 'textfield',
+                        label: 'Прізвище',
+                        itemId: 'surname'
+                    },
                     {
                         xtype: 'emailfield',
                         label: 'Email',
@@ -41,20 +59,6 @@ Ext.define('DL.view.RegistrationForm', {
                         xtype: 'passwordfield',
                         label: 'Повторіть пароль',
                         itemId: 'checkPassword'
-                    },
-                    {
-                        xtype: 'textfield',
-                        label: 'Ім\'я',
-                        itemId: 'name'
-//                        listeners : {
-//                            scope : this,
-//                            blur: this.checkNameField
-//                        }
-                    },
-                    {
-                        xtype: 'textfield',
-                        label: 'Прізвище',
-                        itemId: 'surname'
                     },
                     {
                         xtype: 'datepickerfield',
@@ -77,6 +81,41 @@ Ext.define('DL.view.RegistrationForm', {
                             {text: 'Бухгалтер',  value: 'third'}
                         ]
                     }
+//                    {
+//                        xtype: 'container',
+//                        layout: 'hbox',
+//                        cls: 'sex-container',
+//                        items: [
+//                            {
+//                                xtype: 'container',
+//                                html: 'Стать',
+//                                cls: 'sex-title',
+//                                width: '30%'
+//                            },
+//                            {
+//                            xtype: 'container',
+//                            layout: 'hbox',
+//                            cls: 'radiobutton-container',
+//                            width: '70%',
+//                            items: [
+//                                {
+//                                    xtype: 'radiofield',
+//                                    label: 'Чоловіча',
+//                                    checked: true,
+//                                    width: '50%'
+//                                },
+//                                {
+//                                    xtype: 'radiofield',
+//                                    label: 'Жіноча',
+//                                    width: '50%'
+//                                }
+//                            ]
+//                        }
+//                        ]
+//                    },
+
+
+
 
                 ]
 
@@ -113,7 +152,7 @@ Ext.define('DL.view.RegistrationForm', {
         this.down('#submit-btn').setHandler(this.submitRegistrationForm);
         this.down('#cancel-btn').setScope(this);
         this.down('#cancel-btn').setHandler(this.closeRegistrationForm);
-       this.down("#name").element.on('blur', this.checkNameField(), this);
+//       this.down("#name").element.on('blur', this.checkNameField(), this);
         var surname = this.down("#surname").getValue();
         var surname = this.down("#username").getValue();
         var email = this.down("#email").getValue();

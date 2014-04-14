@@ -65,14 +65,14 @@ Ext.define('DL.view.XTitlebar', {
 
     getLoginPanel:function(){
         var panel = Ext.create('DL.view.LoginForm', {
-            width: 320
+            width: '18em'
         })
         panel.showBy(this.down('#login-btn'));
     },
 
     getRegistrationForm:function(){
         var panel = Ext.create('DL.view.RegistrationForm', {
-            width: 380
+            width: '21em'
         })
         panel.showBy(this.down('#registration-btn'));
     }

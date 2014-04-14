@@ -11,7 +11,7 @@ Ext.define('Ext.event.recognizer.LongPress', {
     },
 
     config: {
-        minDuration: 1000
+        minDuration: 1500
     },
 
     handledEvents: ['longpress'],

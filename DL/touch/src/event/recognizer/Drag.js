@@ -19,7 +19,7 @@ Ext.define('Ext.event.recognizer.Drag', {
          * @cfg {Number} minDistance
          * The minimum distance of pixels before a touch event becomes a drag event.
          */
-        minDistance: 8
+        minDistance: 6
     },
 
     constructor: function() {

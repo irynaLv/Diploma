@@ -8,6 +8,7 @@ Ext.define("DL.view.Menu", {
     config:{
         layout:'hbox',
         docked: 'top',
+        fullscreen: true,
         cls: 'menu',
         top: '25%',
         width: '100%',
@@ -39,6 +40,12 @@ Ext.define("DL.view.Menu", {
                     }
                 ]
             }
-        ],
+        ]
+    },
+    initialize: function(){
+        this.callParent();
+        this.down('#documents').setScope(this);
+//        this.down('#documents').setHandler(this.);
+
     }
 })

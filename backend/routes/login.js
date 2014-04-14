@@ -22,8 +22,23 @@ var User = db.model('user');
 
 exports.login = function(req, res){
     //todo add user login
+    var user = new User({
+        password: req.body.password,
+        email: req.body.email
+    });
+    user.find({email:user.email, password: user.password }, function(err) {
+        if (err){
+            res.json(err);
+        }
 
-    res.json(200, {msg: 'logged in'});
+        req.logIn(user, function(err) {
+            if (err){
+                res.json(err);
+            }
+
+            res.json(200, {msg: 'registered'});
+        });
+})
 };
 
 exports.register = function(req, res){

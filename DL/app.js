@@ -39,7 +39,8 @@ Ext.application({
         'Menu',
         'XTitlebar',
         'LoginForm',
-        'RegistrationForm'
+        'RegistrationForm',
+        'Documents'
     ],
 	
 	controllers: [

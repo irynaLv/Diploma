@@ -23,16 +23,26 @@ Ext.define('DL.view.LoginForm', {
                 items: [
                     {
                         xtype: 'textfield',
-                        label: 'Ім\'я',
-                        name: 'login'
+                        label: 'Email',
+                        itemId: 'email'
                     },
                     {
                         xtype: 'passwordfield',
                         label: 'Пароль',
-                        name: 'password'
+                        itemId: 'password'
                     }
 
                 ]
+
+            },
+            {
+
+                xtype: 'container',
+                height: '2em',
+                itemId: 'errorMsg',
+                html:'',
+                cls: 'errorPanel',
+                hidden: true
 
             },
             {
@@ -44,39 +54,64 @@ Ext.define('DL.view.LoginForm', {
                 width:'30%'
             }
 
-//
-//                // Reset and Submit buttons
-//                buttons: [{
-//                    text: 'Login',
-////                    formBind: true, //only enabled once the form is valid
-//                    disabled: true
-////                    handler: function() {
-////                        var form = this.up('form').getForm();
-////                        if (form.isValid()) {
-////                            form.submit({
-////                                success: function(form, action) {
-////                                    Ext.Msg.alert('Success', action.result.msg);
-////                                },
-////                                failure: function(form, action) {
-////                                    Ext.Msg.alert('Failed', action.result.msg);
-////                                }
-////                            });
-////                        }
-////                    }
-//                }]
-////                renderTo: Ext.getBody()
-//
-//            }
+
         ]
     },
 
     initialize:function(){
         this.callParent();
         this.down('#submit-btn').setScope(this);
-        this.down('#submit-btn').setHandler(this.submitLoginForm);
+        this.down('#submit-btn').setHandler(this.checkLoginForm);
+        this.errorMsg = this.down('#errorMsg');
 
     },
-    submitLoginForm: function submitLoginForm(){
-        console.log('Submit Login Form');
+    validateEmail: function validateEmail(email){
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    },
+
+    checkLoginForm: function checkLoginForm(){
+        var email = this.down('#email').getValue();
+        var password = this.down('#password').getValue();
+        if(email != ""){
+            if(!this.validateEmail(email)){
+
+                this.errorMsg.setHidden(false);
+                this.errorMsg.setHtml('Введіть коректний email адрес.')
+                return
+            }
+        }else{
+            this.errorMsg.setHidden(false);
+            this.errorMsg.setHtml('Заповніть всі поля')
+            return
+        }
+
+        if(password !="" ){
+            this.submitLoginForm( email, password);
+            return
+        } else{
+            this.errorMsg.setHidden(false);
+            this.errorMsg.setHtml('Заповніть всі поля')
+        }
+    },
+
+    submitLoginForm: function submitLoginForm(email, password){
+        var me =this;
+        Ext.Ajax.request({
+            method: 'POST',
+            url: 'http://localhost:3000/login',
+            params: {
+                password: password,
+                email: email
+            },
+            success: function(response){
+                var text = response.responseText;
+                me.destroy();
+
+            },
+            error:function(){
+//                me.closeRegistrationForm()
+            }
+        })
     }
 })

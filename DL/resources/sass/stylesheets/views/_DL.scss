@@ -166,3 +166,12 @@
   }
   @include experimental(flex, $flex, not -moz, -webkit, not -o, -ms, not -khtml, official);
 }
+@media screen and (min-width: 1300px) {
+    font-size: 114%;
+}
+@media screen and (max-width: 1299px ) and (min-width: 940px) {
+  font-size: 88%;
+}
+@media screen and (max-width: 939px ) and (min-width: 600px) {
+  font-size: 57%;
+}

@@ -234,7 +234,7 @@ Ext.define('Ext.env.Feature', {
         },
 
         Pointer: function() {
-            return !!window.navigator.msPointerEnabled;
+            return !!window.navigator.pointerEnabled;
         },
 
         Orientation: function() {

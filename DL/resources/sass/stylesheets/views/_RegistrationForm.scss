@@ -46,45 +46,21 @@
           }
         }
       }
-      .sex-title{
-        color: #fff;
-        border-right: 2px solid;
-        .x-inner{
-          padding: .4em;
-          background-color:#141414;
-          .x-innerhtml{
-            color: #fff;
-          }
-        }
 
-      }
-      .sex-container{
-        margin: .3em;
-      }
-      .radiobutton-container{
-        border-radius: 0;
-        .x-field-radio{
-          border-radius: 0;
-          font-size: .8em;
-          border: none;
-          .x-form-label{
-            //width: 17% !important;
-            color: #fff;
-            background-color:#141414;
-            border-radius: 0;
-            border: none;
-          }
-          .x-field-input{
-            //width: 2.5em;
-            //min-width: 2em;
-          }
-        }
-      }
-    }
   }
+
+    .errorPanel{
+      color: #FFF;
+      padding: .2em;
+      width: 100%;
+        .x-innerhtml{
+          text-align: center;
+        }
+    }
+
   .submit-btn{
     border: 1px solid #FFA500;
-    left: 15em;
+    left: 11em;
     margin-bottom: .2em;
   }
   .cancel-btn{
@@ -92,4 +68,5 @@
     //left: 15em;
     margin-bottom: .2em;
   }
+}
 }

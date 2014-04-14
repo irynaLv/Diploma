@@ -43,6 +43,14 @@
       }
     }
   }
+  .errorPanel{
+    color: #FFF;
+    padding: .2em;
+    width: 100%;
+    .x-innerhtml{
+      text-align: center;
+    }
+  }
   .submit-btn{
     border: none;
     left: 11em;

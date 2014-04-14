@@ -267,7 +267,7 @@
 
                 @if $character != null {
                     content: "#{$character}";
-                } @elseif $raw_character != null {
+                } @else if $raw_character != null {
                     content: "#{$raw_character}";
                 }
             }

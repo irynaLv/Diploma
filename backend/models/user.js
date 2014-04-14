@@ -12,11 +12,6 @@ var mongoose = require('mongoose');
 
 
 var UserSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        unique: true,
-        required: true
-    },
     password: {
         type: String,
         required: true
@@ -31,7 +26,8 @@ var UserSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     role: {
         type: Number,

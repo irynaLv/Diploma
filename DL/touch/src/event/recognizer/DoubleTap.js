@@ -89,10 +89,12 @@ Ext.define('Ext.event.recognizer.DoubleTap', {
         }
 
         if (time - this.startTime > maxDuration) {
+            console.log('Tap1');
             this.fireSingleTap(e, touch);
         }
         else {
             this.singleTapTimer = setTimeout(function() {
+                console.log('Tap2');
                 me.fireSingleTap(e, touch);
             }, maxDuration);
         }

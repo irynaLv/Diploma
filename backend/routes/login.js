@@ -17,8 +17,12 @@
 require('../models/user');
 var mongoose = require('mongoose'),
     db = mongoose.createConnection('mongodb://localhost:27017/DL');
+var passport = require('passport');
 
 var User = db.model('user');
+
+
+
 
 exports.login = function(req, res){
     //todo add user login
@@ -26,19 +30,27 @@ exports.login = function(req, res){
         password: req.body.password,
         email: req.body.email
     });
-    user.find({email:user.email, password: user.password }, function(err) {
-        if (err){
-            res.json(err);
-        }
 
-        req.logIn(user, function(err) {
+    passport.authenticate('local',
+        function(err, user) {
+
             if (err){
                 res.json(err);
             }
 
-            res.json(200, {msg: 'registered'});
-        });
-})
+            req.logIn(user, function(err) {
+                if (err){
+                    res.json(err);
+                }
+
+                res.json(200, {msg: 'registered'});
+            });
+
+
+
+        }
+    )(req, res);
+
 };
 
 exports.register = function(req, res){

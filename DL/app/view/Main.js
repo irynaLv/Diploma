@@ -15,10 +15,10 @@ Ext.define('DL.view.Main', {
         items: [
             {
                 xtype: 'xtitlebar'
-            },
-            {
-                xtype: 'menu'
             }
+//            {
+//                xtype: 'menu'
+//            }
         ]
     },
     initialize: function(){

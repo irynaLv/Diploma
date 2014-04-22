@@ -22,34 +22,60 @@ Ext.define('DL.view.XTitlebar', {
                 xtype: 'container',
                 itemId: 'logo-container',
                 cls: 'logo-container',
-                width: '20%'
+                width: '10%'
             },
 
             {
                 xtype:'container',
-                html:'<div>Львівський національний університет ім.Івана Франка</div><div> Факультет електроніки</div>',
-                cls: 'title',
-                width: '63%'
+                layout:'hbox',
+                width: '60%',
+                items: [
+                    {
+                        xtype: 'searchfield',
+                        placeHolder: 'Пошук',
+                        itemId: 'documentSearch'
 
-            },
+                    },
+                    {
+                        xtype: 'button',
+                        text: 'Логін',
+                        cls: 'login-btn',
+                        itemId: 'login-btn',
+                        scope:this,
+                        width:'12%',
+                        hidden: true,
+                        handler:'getLoginPanel'
+                    },
+                    {
+                        xtype: 'button',
+                        cls: 'add-document-btn',
+                        text: '+',
+                        itemId: 'add-document-btn',
+//                        hidden: true,
+                        scope:this
+//                        handler:'getLoginPanel'
+                    },
+                    {
+                        xtype: 'button',
+                        cls: 'user-document-btn',
+//                        hidden: true,
+                        text: 'Мої документи',
+                        itemId: 'user-document-btn'
+//                        handler:'getLoginPanel'
+                    },
+                    {
+                        xtype: 'button',
+                        cls: 'user-setting-btn',
+                        itemId: 'user-setting-btn',
+//                        hidden: true,
+                        text: 'Налаштування',
+                        scope:this
+//                        handler:'getLoginPanel'
+                    }
+                ]
 
-            {
-                text: 'Логін',
-                cls: 'login-btn',
-                itemId: 'login-btn',
-                scope:this,
-                xtype: 'button',
-                width:'8%',
-                handler:'getLoginPanel'
-            },
-            {
-                xtype: 'button',
-                itemId: 'registration-btn',
-                text:"Реєстрація",
-                cls:'singup-btn',
-                width:'8%',
-                handler:'getRegistrationForm'
             }
+
         ]
     },
 
@@ -57,10 +83,19 @@ Ext.define('DL.view.XTitlebar', {
         this.callParent();
 //        this.down('#login-btn').setScope(this);
         this.down('#login-btn').setScope(this);
+        this.down('#add-document-btn').setScope(this);
         this.down('#login-btn').setHandler(this.getLoginPanel);
-        this.down('#registration-btn').setScope(this);
-        this.down('#registration-btn').setHandler(this.getRegistrationForm);
+        this.down('#add-document-btn').setHandler(this.addDocumentPanel);
+        this.down('#documentSearch').on('focus', this.createTagPanel, this)
+//        this.down('#registration-btn').setScope(this);
+//        this.down('#registration-btn').setHandler(this.getRegistrationForm);
 
+    },
+    addDocumentPanel: function(){
+        var panel = Ext.create('DL.view.AddDocument', {
+//            width: 320
+        })
+        panel.showBy(this.down('#add-document-btn'));
     },
 
     getLoginPanel:function(){
@@ -75,5 +110,12 @@ Ext.define('DL.view.XTitlebar', {
             width: 380
         })
         panel.showBy(this.down('#registration-btn'));
+    },
+
+    createTagPanel: function(){
+        var panel = Ext.create('DL.view.Search', {
+//            width: 320
+        })
+        panel.showBy(this.down('#documentSearch'));
     }
 })

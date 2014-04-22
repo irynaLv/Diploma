@@ -14,7 +14,6 @@ Ext.define('DL.view.LoginForm', {
         modal: true,
         hideOnMaskTap:true,
         cls: 'login-panel',
-
         items: [
             {
                 xtype: 'fieldset',
@@ -36,13 +35,30 @@ Ext.define('DL.view.LoginForm', {
 
             },
             {
-                xtype: 'button',
-                text: 'OK',
-                cls: 'submit-btn',
-                itemId: 'submit-btn',
-                handler: 'submitLoginForm',
-                width:'30%'
-            }
+                xtype:'container',
+                layout:'hbox',
+                items:[
+
+                    {
+                        xtype: 'button',
+                        itemId: 'registration-btn',
+                        text:"Реєстрація",
+                        cls:'singup-btn',
+//                        width:'8%',
+                        handler:'getRegistrationForm'
+                    },
+                    {
+                        xtype: 'button',
+                        text: 'OK',
+                        cls: 'submit-btn',
+                        itemId: 'submit-btn',
+                        handler: 'submitLoginForm',
+                        width:'30%'
+                    }
+                ]
+
+
+    }
 
 
         ]
@@ -52,6 +68,8 @@ Ext.define('DL.view.LoginForm', {
         this.callParent();
         this.down('#submit-btn').setScope(this);
         this.down('#submit-btn').setHandler(this.submitLoginForm);
+        this.down('#registration-btn').setScope(this);
+        this.down('#registration-btn').setHandler(this.getRegistrationForm);
 
     },
     submitLoginForm: function submitLoginForm(){
@@ -74,5 +92,11 @@ Ext.define('DL.view.LoginForm', {
             }
         })
         console.log('Submit Login Form');
+    },
+    getRegistrationForm:function(){
+        var panel = Ext.create('DL.view.RegistrationForm', {
+            width: 380
+        })
+        panel.showBy(this.down('#registration-btn'));
     }
 })

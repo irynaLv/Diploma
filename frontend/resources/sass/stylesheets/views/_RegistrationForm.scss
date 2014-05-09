@@ -19,18 +19,24 @@
       }
       .x-form-fieldset-inner{
         border-radius: 0;
-        background: #000;
+        background: #141414;
         border: none;
         .x-field{
-          margin: 0.3em;
+          margin: 0.2em;
           height: 1.5em;
           min-height: 1.5em;
           border-radius: 0;
-          border: none;
+          border: 2px solid #000;
+          margin-bottom: .3em;
+          input::-webkit-input-placeholder{
+            padding-left: .5em;
+            font-size: .9em;
+          }
           .x-form-label{
             min-height: 1.5em;
             border-radius: 0;
             padding: .2em;
+            line-height: .85em;
             color: #FFF;
             background-color:#141414;
             border: none;
@@ -46,27 +52,38 @@
           }
         }
       }
+      .date-field{
+        .label{
+          color: #fff;
+          padding-left: .4em;
+        }
+      }
 
-  }
+    }
 
     .errorPanel{
       color: #FFF;
       padding: .2em;
       width: 100%;
-        .x-innerhtml{
-          text-align: center;
-        }
+      .x-innerhtml{
+        text-align: center;
+      }
     }
 
-  .submit-btn{
-    border: 1px solid #FFA500;
-    left: 11em;
-    margin-bottom: .2em;
+    .submit-btn{
+      border: 1px solid #FFA500;
+      //left: 11em;
+      margin-left: .5em;
+      margin-bottom: .2em;
+    }
+    .cancel-btn{
+      border: 1px solid #FFA500;
+      //left: 15em;
+      margin-bottom: .2em;
+    }
   }
-  .cancel-btn{
-    border: 1px solid #FFA500;
-    //left: 15em;
-    margin-bottom: .2em;
+  .x-clear-icon{
+    width: 2em;
+    height: 2em;
   }
-}
 }

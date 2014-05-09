@@ -24,27 +24,27 @@ Ext.define('DL.view.RegistrationForm', {
 
                     {
                         xtype: 'emailfield',
-                        label: 'Email',
+                        placeHolder: 'Email',
                         itemId: 'email'
                     },
                     {
                         xtype: 'emailfield',
-                        label: 'Повторіть email',
+                        placeHolder: 'Повторіть email',
                         itemId: 'checkEmail'
                     },
                     {
                         xtype: 'passwordfield',
-                        label: 'Пароль',
+                        placeHolder: 'Пароль',
                         itemId: 'password'
                     },
                     {
                         xtype: 'passwordfield',
-                        label: 'Повторіть пароль',
+                        placeHolder: 'Повторіть пароль',
                         itemId: 'checkPassword'
                     },
                     {
                         xtype: 'textfield',
-                        label: 'Ім\'я',
+                        placeHolder: 'Ім\'я',
                         itemId: 'name'
 //                        listeners : {
 //                            scope : this,
@@ -53,28 +53,70 @@ Ext.define('DL.view.RegistrationForm', {
                     },
                     {
                         xtype: 'textfield',
-                        label: 'Прізвище',
+                        placeHolder: 'Прізвище',
                         itemId: 'surname'
                     },
                     {
-                        xtype: 'datepickerfield',
-                        label: 'День народження',
-                        itemId: 'birthday',
-                        picker: {
-                            yearFrom: 1940,
-                            yearTo  : new Date().getFullYear()
+                        xtype: 'selectfield',
+                        label: 'Стать',
+                        itemId: 'sex',
+                        options: [
+                            {text: 'Чоловік',  value: 1},
+                            {text: 'Жінка', value: 2}
+                        ]
+                    },
 
-                        },
-                        value: new Date()
+                    {
+                        xtype: 'selectfield',
+                        label: 'Роль',
+                        itemId: 'role',
+                        options: [
+                            {text: 'Студент',  value: 1},
+                            {text: 'Працівник', value: 2}
+                        ]
                     },
                     {
                         xtype: 'selectfield',
                         label: 'Статус',
+                        hidden: true,
                         itemId: 'status',
+                        usePicker: true,
                         options: [
-                            {text: 'Студент',  value: 'first'},
-                            {text: 'Викладач', value: 'second'},
-                            {text: 'Бухгалтер',  value: 'third'}
+                            {text: 'Професор',  value: 1},
+                            {text: 'Доцент', value: 2},
+                            {text: 'Асистент', value: 3},
+                            {text: 'Старший викладач', value: 4},
+                            {text: 'МНС', value: 5},
+                            {text: 'Старший науковий співробітние', value: 6},
+                            {text: 'Інженер', value: 7},
+                            {text: 'Лаборант', value: 8},
+                            {text: 'Завідувач лабораторії', value: 9},
+                            {text: 'Бухгалтер', value: 10}
+                        ]
+                    },
+
+
+                    {
+                        xtype: 'container',
+                        layout:'vbox',
+                        cls: 'date-field',
+                        items:[
+                            {
+                                xtype: 'container',
+                                html:'День народження',
+                                cls: 'label'
+                            },
+                            {
+                                xtype: 'datepickerfield',
+
+                                itemId: 'birthday',
+                                picker: {
+                                    yearFrom: 1940,
+                                    yearTo  : new Date().getFullYear()
+
+                                },
+                                value: new Date()
+                            }
                         ]
                     }
 
@@ -104,6 +146,10 @@ Ext.define('DL.view.RegistrationForm', {
 //                        width:'30%'
                     },
                     {
+                        xtype: 'spacer',
+                        width: '5.5em'
+                    },
+                    {
                         xtype: 'button',
                         text: 'OK',
                         cls: 'submit-btn',
@@ -124,18 +170,27 @@ Ext.define('DL.view.RegistrationForm', {
         this.down('#submit-btn').setHandler(this.checkRegistrationForm);
         this.down('#cancel-btn').setScope(this);
         this.down('#cancel-btn').setHandler(this.closeRegistrationForm);
+        this.down('#role').on('change', this.setStatusVisible, this);
         this.errorMsg = this.down('#errorMsg');
         this.down("#name").on('keyup', this.checkNameField, this);
-//        this.down("#surname").on('keyup', this.checkNameField(), this);
-//        this.down("#email").on('keyup', this.checkNameField(), this);
-//        this.down("#checkEmail").on('keyup', this.checkNameField(), this);
-//        this.down("#password").on('keyup', this.checkNameField(), this);
-//        this.down("#checkPassword").on('keyup', this.checkNameField(), this);
-
+        this.on('painted', function(){
+            this.on('hide', function(){
+                this.destroy();
+            })
+        })
 
     },
 
-    submitRegistrationForm:function(name, surname, email, password, birthday, status){
+    setStatusVisible: function(){
+      var value =  this.down('#role').getValue();
+        if(value == 2){
+            this.down('#status').setHidden(false);
+        }else{
+            this.down('#status').setHidden(true);
+        }
+    },
+
+    submitRegistrationForm:function(name, surname, email, password, birthday, status, role, sex){
         var me = this;
         Ext.Ajax.request({
             method: 'POST',
@@ -146,7 +201,9 @@ Ext.define('DL.view.RegistrationForm', {
                 firstName:name,
                 secondName: surname,
                 email: email,
-                role: 1,
+                role: role,
+                status: status,
+                sex: sex,
                 birthDay: birthday
             },
             success: function(response){
@@ -173,7 +230,12 @@ Ext.define('DL.view.RegistrationForm', {
         var password = this.down("#password").getValue();
         var checkPassword = this.down("#checkPassword").getValue();
         var birthday = this.down("#birthday").getValue();
-        var status = this.down("#status").getOptions();
+        var role = this.down("#role").getValue();
+        var sex = this.down("#sex").getValue();
+        var status = this.down("#status").getValue();
+        if(role == 1){
+            status = 0
+        }
         if(email != "" && this.validateEmail(email)){
 
             if(email != checkEmail){
@@ -194,7 +256,7 @@ Ext.define('DL.view.RegistrationForm', {
             return
         }
         if(name !="" && surname !=""){
-            this.submitRegistrationForm(name, surname, email, password, birthday, status);
+            this.submitRegistrationForm(name, surname, email, password, birthday, role, sex, status);
             return
         } else{
             this.errorMsg.setHidden(false);

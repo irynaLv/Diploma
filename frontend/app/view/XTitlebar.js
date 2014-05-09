@@ -41,9 +41,10 @@ Ext.define('DL.view.XTitlebar', {
                         text: 'Логін',
                         cls: 'login-btn',
                         itemId: 'login-btn',
+                        id: 'login-btn',
                         scope:this,
                         width:'12%',
-                        hidden: true,
+//                        hidden: true,
                         handler:'getLoginPanel'
                     },
                     {
@@ -100,7 +101,7 @@ Ext.define('DL.view.XTitlebar', {
 
     getLoginPanel:function(){
         var panel = Ext.create('DL.view.LoginForm', {
-            width: 320
+            width: '17em'
         })
         panel.showBy(this.down('#login-btn'));
     },

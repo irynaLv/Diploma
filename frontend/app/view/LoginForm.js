@@ -48,6 +48,10 @@ Ext.define('DL.view.LoginForm', {
                         handler:'getRegistrationForm'
                     },
                     {
+                        xtype: 'spacer',
+                        width: '5.6em'
+                    },
+                    {
                         xtype: 'button',
                         text: 'OK',
                         cls: 'submit-btn',
@@ -70,6 +74,11 @@ Ext.define('DL.view.LoginForm', {
         this.down('#submit-btn').setHandler(this.submitLoginForm);
         this.down('#registration-btn').setScope(this);
         this.down('#registration-btn').setHandler(this.getRegistrationForm);
+        this.on('painted', function(){
+            this.on('hide', function(){
+                this.destroy();
+            })
+        })
 
     },
     submitLoginForm: function submitLoginForm(){
@@ -94,9 +103,11 @@ Ext.define('DL.view.LoginForm', {
         console.log('Submit Login Form');
     },
     getRegistrationForm:function(){
+
         var panel = Ext.create('DL.view.RegistrationForm', {
-            width: 380
+            width: '15em'
         })
-        panel.showBy(this.down('#registration-btn'));
+        panel.showBy(Ext.getBody().down('#login-btn'));
+        this.destroy();
     }
 })

@@ -4,7 +4,7 @@
     //padding: .4em;
     font-weight: 700;
     background-color: #000000;
-    border:1px solid #000000;
+    border:none;
     border-radius: 0px;
     background-image: none;
 
@@ -67,9 +67,9 @@
 .x-button{
   //&.x-noicon{
   //padding: .4em;
-  font-weight: 700;
+  //font-weight: 700;
   background-color: #000000;
-  border:1px solid #000000;
+  border:none;
   border-radius: 0px;
   background-image: none;
 
@@ -78,7 +78,7 @@
   .x-button-label{
     color: #ffffff;
     //font-size: 1.1em;
-    font-weight: 700;
+    font-weight: normal;
   }
   &.x-button-pressing{
     background-color: #ffb94b;

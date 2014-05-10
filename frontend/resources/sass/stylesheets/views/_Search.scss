@@ -1,0 +1,71 @@
+.search-document-panel{
+  background: #000000;
+  .x-panel-inner{
+    font-size: .9em;
+    padding: .5em;
+    background-color: #141414 !important;
+    border-radius: 0 !important;
+
+    .x-container{
+      background-color: #141414;
+      //height: 1.5em;
+      //min-height: 1.5em;
+    }
+    .date-container{
+      //height: 1.5em;
+      margin: .3em 0;
+    }
+    .owner{
+      padding: .6em 0;
+      .x-form-label{
+        font-size: 1.2em;
+        padding: 0;
+      }
+      &.x-field-focused{
+        .x-form-field{
+          //width: 80%;
+        }
+      }
+    }
+    .document-type{
+      .title{
+        line-height: 10em;
+      }
+      .types{
+        .x-form-label{
+          overflow: visible;
+        }
+      }
+    }
+    .title{
+      color: #fff;
+      font-weight: bold;
+      line-height: 1.7em;
+    }
+    .x-field-select{
+      width: 100% !important;
+      .x-form-label{
+        background: #141414;
+        color: #fff;
+        text-align: center;
+      }
+      .x-component-outer{
+        background: #141414;
+        color: #fff;
+      }
+    }
+    .x-form-label{
+      min-height: 1.5em;
+      border-radius: 0;
+      padding: .2em;
+      //line-height: .85em;
+      color: #FFF;
+      background-color:#141414;
+      border: none;
+      text-shadow: none;
+    }
+    .x-input-el{
+      min-height: 1.5em;
+    }
+  }
+}

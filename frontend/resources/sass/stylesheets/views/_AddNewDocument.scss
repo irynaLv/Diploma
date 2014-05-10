@@ -1,0 +1,92 @@
+.add-document-panel{
+  .x-panel-inner{
+    background-color: #141414 !important;
+    border-radius: 0 !important;
+  }
+  .choose-segmented-btn{
+    .x-button{
+      border-radius: 0;
+      &.x-button-pressed{
+        //background: #000;
+        border: 1px solid #000;
+        .x-button-label{
+          color: #000;
+        }
+      }
+    }
+  }
+  .name{
+    margin: .5em 0;
+    min-height: 1.5em;
+    .x-form-label{
+      height: 1.5em;
+      color: #fff;
+      background: #141414;
+      padding: 0.1em .6em;
+    }
+    .x-component-outer{
+      height: 1.5em;
+      min-height: 1.5em;
+      .x-input-el{
+        min-height: 1.5em;
+        height: 1.5em;
+        padding: 0.1em .6em;
+      }
+    }
+  }
+  .description{
+    margin: .5em 0;
+    .x-form-label{
+      color: #fff;
+      background: #141414;
+      padding: 0.1em .6em;
+    }
+    .x-component-outer{
+      .x-input-el{
+        padding: 0.1em .6em;
+      }
+    }
+  }
+  .role{
+    margin: .5em 0;
+    .title{
+      line-height: 8em;
+      color: #fff;
+    }
+    .x-field-checkbox{
+      min-height: 1.5em;
+    }
+    .x-form-label{
+      //height: 1.5em;
+      //min-height: 1.5em;
+      border-radius: 0;
+      padding-left: 4em;
+    }
+    .x-component-outer{
+      //height: 1.5em;
+      //min-height: 1.5em;
+      background: #141414;
+
+    }
+  }
+  .file{
+    background: #141414;
+    input{
+      background: #141414;
+
+    }
+  }
+  .x-form-label{
+    //height: 1.5em;
+    color: #fff;
+    border-radius: 0;
+    background: #141414;
+    padding: 0.1em .6em;
+  }
+  .x-component-outer{
+
+    .x-input-el{
+      padding: 0.1em .6em;
+    }
+  }
+}

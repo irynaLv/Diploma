@@ -87,9 +87,8 @@ Ext.define('DL.view.XTitlebar', {
         this.down('#add-document-btn').setScope(this);
         this.down('#login-btn').setHandler(this.getLoginPanel);
         this.down('#add-document-btn').setHandler(this.addDocumentPanel);
-        this.down('#documentSearch').on('focus', this.createTagPanel, this)
-//        this.down('#registration-btn').setScope(this);
-//        this.down('#registration-btn').setHandler(this.getRegistrationForm);
+        this.down('#documentSearch').on('focus', this.createTagPanel, this);
+        this.down('#documentSearch').on('blur', this.destroySearchPanel, this);
 
     },
     addDocumentPanel: function(){
@@ -106,17 +105,14 @@ Ext.define('DL.view.XTitlebar', {
         panel.showBy(this.down('#login-btn'));
     },
 
-    getRegistrationForm:function(){
-        var panel = Ext.create('DL.view.RegistrationForm', {
-            width: 380
-        })
-        panel.showBy(this.down('#registration-btn'));
-    },
-
     createTagPanel: function(){
-        var panel = Ext.create('DL.view.Search', {
+        this.searchPanel = Ext.create('DL.view.Search', {
 //            width: 320
         })
-        panel.showBy(this.down('#documentSearch'));
+        this.searchPanel.showBy(this.down('#documentSearch'));
+    },
+    destroySearchPanel: function(){
+//        this.searchPanel.destroy();
+//        this.searchPanel = null;
     }
 })

@@ -11,19 +11,26 @@ Ext.define('DL.view.AddDocument', {
             type: 'vbox',
             align: 'left'
         },
-        modal: true,
+//        modal: true,
         flex: 1,
         hideOnMaskTap:true,
         cls: 'add-document-panel',
         items: [
             {
                 xtype: 'segmentedbutton',
+                cls: 'choose-segmented-btn',
+                width:'100%',
                 items: [
                     {
-                        text: 'Документи'
+                        text: 'Документи',
+                        width:'50%',
+                        cls: 'documents',
+                        pressed:true
                     },
                     {
-                        text: 'Оголошення'
+                        text: 'Оголошення',
+                        width:'50%',
+                        cls: 'advert'
                     }
 
                 ]
@@ -31,17 +38,26 @@ Ext.define('DL.view.AddDocument', {
             },
             {
                 xtype: 'textfield',
-                label:'Назва'
+                label:'Назва',
+                labelWidth:'30%',
+                width: '100%',
+                cls:'name'
             },
             {
                 xtype: 'textareafield',
-                label:'Опис'
+                label:'Опис',
+                labelWidth:'30%',
+                width: '100%',
+                cls:'description'
             },
             {
                 xtype: 'selectfield',
                 width: '100%',
                 label: 'Тип',
-                itemId: 'status',
+                labelWidth:'30%',
+                cls:'type',
+                width: '100%',
+                itemId: 'type',
                 options: [
                     {text: 'Навчальні матеріали',  value: 1},
                     {text: 'Нормативні документи', value: 2},
@@ -54,29 +70,39 @@ Ext.define('DL.view.AddDocument', {
             {
                 xtype:'container',
                 width: '100%',
+                cls:'role',
+                layout:'hbox',
                 items: [
                     {
 
                         xtype: 'container',
-                        html:'Рівень досупу'
+                        html:'Рівень досупу',
+                        cls: 'title'
                     },
                     {
                         xtype: 'container',
+                        width: '50%',
                         items: [
                             {
                                 xtype: 'checkboxfield',
+                                labelWidth: '80%',
+
                                 label: 'Працівники'
                             },
                             {
                                 xtype: 'checkboxfield',
-                                label: 'Студент'
+                                labelWidth: '80%',
+                                label: 'Студенти'
+
                             },
                             {
                                 xtype: 'checkboxfield',
+                                labelWidth: '80%',
                                 label: 'Власник'
                             },
                             {
                                 xtype: 'checkboxfield',
+                                labelWidth: '80%',
                                 label: 'Всі'
                             }
 
@@ -87,14 +113,14 @@ Ext.define('DL.view.AddDocument', {
             },
             {
                 xtype: 'filefield',
-                label: "Файл:"
-//                name: 'photo',
-//                accept: 'image'
+                label: "Файл:",
+                cls: 'file'
 
             },
             {
                 xtype: 'button',
-                text: 'Завантажити'
+                text: 'Завантажити',
+                cls: 'upload-btn'
             }
 
         ]

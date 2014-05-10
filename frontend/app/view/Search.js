@@ -18,79 +18,106 @@ Ext.define('DL.view.Search', {
         items:[
             {
                 xtype: 'container',
+                layout: 'hbox',
+                cls: 'date-container',
                 items: [
                     {
                         xtype: 'container',
+                        cls: 'title',
+                        width: '45%',
                         html: 'Дата створення'
                     },
                     {
-                        xtype: 'datepickerfield',
-                        itemId: 'birthday',
-                        label: 'від',
-                        picker: {
-                            yearFrom: 2010,
-                            yearTo  : new Date().getFullYear()
+                        xtype: 'container',
+                        layout:'vbox',
+                        width:'50%',
 
-                        },
-                        value: new Date()
-                    },
-                    {
-                        xtype: 'datepickerfield',
-                        itemId: 'birthday',
-                        label: 'до',
-                        picker: {
-                            yearFrom: 2010,
-                            yearTo  : new Date().getFullYear()
+                        items:[
+                            {
+                                xtype: 'datepickerfield',
+                                itemId: 'date-create-from',
+                                cls: 'date-create-from',
+                                label: 'від',
+                                width: '100%',
+                                picker: {
+                                    yearFrom: 2010,
+                                    yearTo  : new Date().getFullYear()
 
-                        },
-                        value: new Date()
+                                },
+                                value: new Date()
+                            },
+                            {
+                                xtype: 'datepickerfield',
+                                itemId: 'date-create-to',
+                                cls: 'date-create-to',
+                                label: 'до',
+                                width: '100%',
+                                picker: {
+                                    yearFrom: 2010,
+                                    yearTo  : new Date().getFullYear()
+
+                                },
+                                value: new Date()
+                            }
+                        ]
                     }
                 ]
+            },
+            {
+                xtype: 'textfield',
+                width: '100%',
+                label: 'Власник документа',
+                labelWidth:'45%',
+                itemId: 'status',
+                cls: 'title owner'
+
             },
             {
                 xtype:'container',
                 width: '100%',
+                layout:'hbox',
+                cls: 'document-type',
                 items: [
                     {
 
                         xtype: 'container',
+                        cls: 'title',
+                        width: '45%',
                         html:'Тип документа'
                     },
                     {
                         xtype: 'container',
-                        items: [
+                        width: '50%',
+                        cls: 'types',
+                        layout: 'vbox',
+                        items:[
                             {
                                 xtype: 'checkboxfield',
+                                labelWidth: '80%',
                                 label: 'Навчальні матеріали'
                             },
                             {
                                 xtype: 'checkboxfield',
+                                labelWidth: '80%',
                                 label: 'Нормативні документи'
                             },
                             {
                                 xtype: 'checkboxfield',
+                                labelWidth: '80%',
                                 label: 'Протоколи засідань'
                             },
                             {
                                 xtype: 'checkboxfield',
+                                labelWidth: '80%',
                                 label: 'Інформаційні матеріали'
                             },
                             {
                                 xtype: 'checkboxfield',
+                                labelWidth: '80%',
                                 label: 'Оголошення'
                             }
-
                         ]
                     }
-
-                ]
-            },
-            {
-                xtype: 'selectfield',
-                width: '100%',
-                label: 'Власник документа',
-                itemId: 'status',
-                options: [
                 ]
             },
             {
@@ -100,6 +127,11 @@ Ext.define('DL.view.Search', {
         ]
     },
     initComponent:function(){
+        this.on('painted', function(){
+            this.on('hide', function(){
+                this.destroy();
+            })
+        })
         this.callParent();
     }
 })

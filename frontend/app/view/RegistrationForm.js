@@ -60,6 +60,7 @@ Ext.define('DL.view.RegistrationForm', {
                         xtype: 'selectfield',
                         label: 'Стать',
                         itemId: 'sex',
+//                        height: '7em',
                         options: [
                             {text: 'Чоловік',  value: 1},
                             {text: 'Жінка', value: 2}

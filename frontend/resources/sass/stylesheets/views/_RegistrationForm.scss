@@ -22,12 +22,14 @@
         background: #141414;
         border: none;
         .x-field{
+          height: 1.5em;
+          min-height: 1.5em;
           margin: 0.2em;
 
 
           border-radius: 0;
           border: 2px solid #000;
-          margin-bottom: .3em;
+          margin-bottom: .5em;
           input::-webkit-input-placeholder{
             padding-left: .5em;
             font-size: .9em;
@@ -44,6 +46,11 @@
           }
           .x-input-el{
             min-height: 1.4em;
+          }
+          &.x-field-select{
+            height: 1.6em;
+            min-height: 1.6em;
+
           }
         }
         .x-component-outer{

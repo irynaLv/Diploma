@@ -60,7 +60,7 @@ Ext.define('DL.view.XTitlebar', {
                         xtype: 'button',
                         cls: 'user-document-btn',
 //                        hidden: true,
-                        text: 'Мої документи',
+                        icon:'../../resources/images/My_Documents-64.png',
                         itemId: 'user-document-btn'
 //                        handler:'getLoginPanel'
                     },
@@ -106,10 +106,13 @@ Ext.define('DL.view.XTitlebar', {
     },
 
     createTagPanel: function(){
-        this.searchPanel = Ext.create('DL.view.Search', {
+        if(!this.searchPanel){
+            this.searchPanel = Ext.create('DL.view.Search', {
 //            width: 320
-        })
-        this.searchPanel.showBy(this.down('#documentSearch'));
+            })
+            this.searchPanel.showBy(this.down('#documentSearch'));
+        }
+
     },
     destroySearchPanel: function(){
 //        this.searchPanel.destroy();

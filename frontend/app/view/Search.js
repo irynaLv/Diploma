@@ -57,7 +57,7 @@ Ext.define('DL.view.Search', {
                                     yearTo  : new Date().getFullYear()
 
                                 },
-                                value: new Date()
+                                value: new Date(new Date(new Date().setMonth(new Date().getMonth()-1)).setHours(0, 0, 0))
                             }
                         ]
                     }
@@ -122,11 +122,14 @@ Ext.define('DL.view.Search', {
             },
             {
                 xtype: 'button',
+                cls:'search-btn',
                 text: 'Пошук'
             }
         ]
     },
     initComponent:function(){
+        this.dateFrom = new Date();
+        this.dateTo = new Date(new Date(new Date().setMonth(new Date().getMonth()-1)).setHours(0, 0, 0));
         this.on('painted', function(){
             this.on('hide', function(){
                 this.destroy();

@@ -16,26 +16,26 @@ Ext.define('DL.view.AddDocument', {
         hideOnMaskTap:true,
         cls: 'add-document-panel',
         items: [
-            {
-                xtype: 'segmentedbutton',
-                cls: 'choose-segmented-btn',
-                width:'100%',
-                items: [
-                    {
-                        text: 'Документи',
-                        width:'50%',
-                        cls: 'documents',
-                        pressed:true
-                    },
-                    {
-                        text: 'Оголошення',
-                        width:'50%',
-                        cls: 'advert'
-                    }
-
-                ]
-
-            },
+//            {
+//                xtype: 'segmentedbutton',
+//                cls: 'choose-segmented-btn',
+//                width:'100%',
+//                items: [
+//                    {
+//                        text: 'Документи',
+//                        width:'50%',
+//                        cls: 'documents',
+//                        pressed:true
+//                    },
+//                    {
+//                        text: 'Оголошення',
+//                        width:'50%',
+//                        cls: 'advert'
+//                    }
+//
+//                ]
+//
+//            },
             {
                 xtype: 'textfield',
                 label:'Назва',
@@ -119,6 +119,7 @@ Ext.define('DL.view.AddDocument', {
             },
             {
                 xtype: 'button',
+                buttonText: 'Файл',
                 text: 'Завантажити',
                 cls: 'upload-btn'
             }

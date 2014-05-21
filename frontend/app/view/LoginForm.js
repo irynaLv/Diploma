@@ -103,9 +103,13 @@ Ext.define('DL.view.LoginForm', {
         console.log('Submit Login Form');
     },
     getRegistrationForm:function(){
-
+        var email = null;
+        if(this.down('#email').getValue().length > 0){
+            var email = this.down('#email').getValue();
+        }
         var panel = Ext.create('DL.view.RegistrationForm', {
-            width: '15em'
+            width: '15em',
+            emailValue: email
         })
         panel.showBy(Ext.getBody().down('#login-btn'));
         this.destroy();

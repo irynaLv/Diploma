@@ -36,6 +36,14 @@ var UserSchema = new mongoose.Schema({
     birthDay: {
         type: Date,
         required: true
+    },
+    title:{
+        type: String,
+        required:true
+    },
+    sex:{
+        type: String,
+        required:true
     }
 });
 

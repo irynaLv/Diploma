@@ -50,7 +50,8 @@ Ext.define('DL.view.XTitlebar', {
                     {
                         xtype: 'button',
                         cls: 'add-document-btn',
-                        text: '+',
+//                        text: '+',
+                        icon:'../../resources/images/document_add.png',
                         itemId: 'add-document-btn',
 //                        hidden: true,
                         scope:this

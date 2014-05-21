@@ -7,6 +7,7 @@ Ext.define('DL.view.RegistrationForm', {
     alias: 'widget.registrationForm',
 
     config: {
+        emailValue: null,
         layout: {
             type: 'vbox',
             align: 'left'
@@ -26,6 +27,7 @@ Ext.define('DL.view.RegistrationForm', {
                         xtype: 'emailfield',
                         placeHolder: 'Email',
                         itemId: 'email'
+
                     },
                     {
                         xtype: 'emailfield',
@@ -167,6 +169,7 @@ Ext.define('DL.view.RegistrationForm', {
 
     initialize:function(){
         this.callParent();
+        this.down('#email').setValue(this._emailValue? this._emailValue: null);
         this.down('#submit-btn').setScope(this);
         this.down('#submit-btn').setHandler(this.checkRegistrationForm);
         this.down('#cancel-btn').setScope(this);

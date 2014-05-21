@@ -81,7 +81,7 @@ Ext.define('DL.view.AddDocument', {
                     },
                     {
                         xtype: 'container',
-                        width: '50%',
+                        width: '70%',
                         items: [
                             {
                                 xtype: 'checkboxfield',
@@ -114,7 +114,8 @@ Ext.define('DL.view.AddDocument', {
             {
                 xtype: 'filefield',
                 label: "Файл:",
-                cls: 'file'
+                cls: 'file',
+                itemId: 'file'
 
             },
             {
@@ -128,6 +129,14 @@ Ext.define('DL.view.AddDocument', {
     },
 
     initComponent: function(){
+        this.down('#type').on('change', this.setFileHidden, this)
         this.callParent();
+
+    },
+
+    setFileHidden: function(field, newValue, oldValue){
+        if(newValue == 5){
+            this.down('#file').setHidden(true);
+        }
     }
 })

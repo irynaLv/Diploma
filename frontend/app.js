@@ -41,7 +41,8 @@ Ext.application({
         'LoginForm',
         'RegistrationForm',
         'AddDocument',
-        'Search'
+        'Search',
+        'News'
     ],
 
     controllers: [

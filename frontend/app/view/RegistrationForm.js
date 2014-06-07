@@ -90,7 +90,7 @@ Ext.define('DL.view.RegistrationForm', {
                             {text: 'Асистент', value: 3},
                             {text: 'Старший викладач', value: 4},
                             {text: 'МНС', value: 5},
-                            {text: 'Старший науковий співробітние', value: 6},
+                            {text: 'Старший науковий співробітник', value: 6},
                             {text: 'Інженер', value: 7},
                             {text: 'Лаборант', value: 8},
                             {text: 'Завідувач лабораторії', value: 9},

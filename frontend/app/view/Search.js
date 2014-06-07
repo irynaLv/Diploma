@@ -68,6 +68,7 @@ Ext.define('DL.view.Search', {
                 width: '100%',
                 label: 'Власник документа',
                 labelWidth:'45%',
+                placeHolder:"Прізвище власника",
                 itemId: 'status',
                 cls: 'title owner'
 

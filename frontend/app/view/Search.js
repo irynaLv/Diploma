@@ -11,9 +11,9 @@ Ext.define('DL.view.Search', {
             type: 'vbox',
             align: 'left'
         },
-        modal: true,
+//        modal: true,
         flex: 1,
-        hideOnMaskTap:true,
+        hideOnMaskTap:false,
         cls: 'search-document-panel',
         items:[
             {
@@ -122,9 +122,22 @@ Ext.define('DL.view.Search', {
                 ]
             },
             {
-                xtype: 'button',
-                cls:'search-btn',
-                text: 'Пошук'
+                xtype: 'container',
+                layout: 'hbox',
+                items:[
+                    {
+                        xtype: 'button',
+                        cls:'search-btn',
+                        text: 'Пошук'
+                    },
+                    {
+                        xtype: 'button',
+                        text: 'Закрити',
+                        cls: 'cancel-btn',
+                        itemId: 'cancel-btn'
+                        //                        width:'30%'
+                    }
+                ]
             }
         ]
     },

@@ -65,15 +65,15 @@ Ext.define('DL.view.XTitlebar', {
                         itemId: 'user-document-btn'
 //                        handler:'getLoginPanel'
                     },
-                    {
-                        xtype: 'button',
-                        cls: 'user-setting-btn',
-                        itemId: 'user-setting-btn',
-//                        hidden: true,
-                        text: 'Налаштування',
-                        scope:this
-//                        handler:'getLoginPanel'
-                    }
+//                    {
+//                        xtype: 'button',
+//                        cls: 'user-setting-btn',
+//                        itemId: 'user-setting-btn',
+////                        hidden: true,
+//                        text: 'Налаштування',
+//                        scope:this
+////                        handler:'getLoginPanel'
+//                    }
                 ]
 
             }
@@ -83,6 +83,8 @@ Ext.define('DL.view.XTitlebar', {
 
     initialize: function(){
         this.callParent();
+        this.newDocumentPanel = null;
+        this.searchPanel = null;
 //        this.down('#login-btn').setScope(this);
         this.down('#login-btn').setScope(this);
         this.down('#add-document-btn').setScope(this);
@@ -93,10 +95,14 @@ Ext.define('DL.view.XTitlebar', {
 
     },
     addDocumentPanel: function(){
-        var panel = Ext.create('DL.view.AddDocument', {
-//            width: 320
-        })
-        panel.showBy(this.down('#add-document-btn'));
+        if(this.newDocumentPanel){
+            this.newDocumentPanel.setHidden(false);
+        } else{
+            this.newDocumentPanel = Ext.create('DL.view.AddDocument', {
+            })
+            this.newDocumentPanel.showBy(this.down('#add-document-btn'));
+        }
+
     },
 
     getLoginPanel:function(){
@@ -107,16 +113,25 @@ Ext.define('DL.view.XTitlebar', {
     },
 
     createTagPanel: function(){
-        if(!this.searchPanel){
+        if(this.searchPanel){
+            this.searchPanel.setHidden(false);
+        } else{
             this.searchPanel = Ext.create('DL.view.Search', {
-//            width: 320
             })
             this.searchPanel.showBy(this.down('#documentSearch'));
         }
 
+//        if(!this.searchPanel){
+//            this.searchPanel = Ext.create('DL.view.Search', {
+//            })
+//            this.searchPanel.showBy(this.down('#documentSearch'));
+//        }else{
+//            this.searchPanel.setHidden(false);
+//        }
+
     },
     destroySearchPanel: function(){
-//        this.searchPanel.destroy();
-//        this.searchPanel = null;
+        this.searchPanel.destroy();
+        this.searchPanel = null;
     }
 })

@@ -55,10 +55,6 @@ Ext.define('DL.view.RegistrationForm', {
                         xtype: 'textfield',
                         placeHolder: 'Ім\'я',
                         itemId: 'name'
-//                        listeners : {
-//                            scope : this,
-//                            blur: this.checkNameField
-//                        }
                     },
                     {
                         xtype: 'textfield',
@@ -216,30 +212,19 @@ Ext.define('DL.view.RegistrationForm', {
     },
 
     submitRegistrationForm:function(name, surname, email, password, birthday, status, role, sex){
-        var me = this;
-        Ext.Ajax.request({
-            method: 'POST',
-            url: 'http://localhost:3000/register',
-            params: {
-                username: name,
-                password: password,
-                firstName:name,
-                secondName: surname,
-                email: email,
-                role: role,
-                status: status,
-                sex: sex,
-                birthDay: birthday
-            },
-            success: function(response){
-                var text = response.responseText;
-                // process server response here
-                me.closeRegistrationForm()
-            },
-            error:function(){
-                me.closeRegistrationForm()
-            }
-        })
+        var data = {
+            name: name,
+            surname: surname,
+            email: mail,
+            password: password,
+            birthday: birthday,
+            status: status,
+            role: role,
+            sex: sex
+        };
+
+        this.fireEvent('submitRegistrationForm', data);
+
     },
     validateEmail: function validateEmail(email){
         var re = /\S+@\S+\.\S+/;

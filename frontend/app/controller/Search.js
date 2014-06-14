@@ -22,17 +22,64 @@ Ext.define('DL.controller.Search', {
         },
         control: {
             searchPanel: {
-//                initialize: 'onInitialize'
+                sendAdvancedSearch: 'searchByTags'
             },
             closeSearchPanelBtn:{
                 tap: 'closeSearchPanel'
             },
             searchField: {
-                focus: 'openAdvancedSearch'
+                focus: 'openAdvancedSearch',
+                action: 'searchByName'
             }
 
         }
     },
+
+    searchByName: function(){
+        this.dateFrom = new Date();
+        this.dateTo = new Date(new Date(new Date().setMonth(new Date().getMonth()-1)).setHours(0, 0, 0));
+        var timePeriod={
+            from: this.dateTo,
+            to:this.dateFrom
+        };
+        var name = this.getSearchField().getValue();
+        var dateFrom =
+        Ext.Ajax.request({
+            method: 'GET',
+            url: '/getDocuments',
+            params: {
+                name: name,
+                tags : null,
+                timePeriod:timePeriod
+            },
+            success: function(response){
+                var text = response.responseText;
+            },
+            error:function(){
+
+            }
+        })
+    },
+
+    searchByTags: function(tags, timePeriod){
+        var name = this.getSearchField().getValue();
+        Ext.Ajax.request({
+            method: 'GET',
+            url: '/getDocuments',
+            params: {
+                name: name,
+                tags : tags,
+                timePeriod:timePeriod
+            },
+            success: function(response){
+                var text = response.responseText;
+            },
+            error:function(){
+
+            }
+        })
+    },
+
 
     closeSearchPanel: function(){
         this.searchPanel.setHidden(true)

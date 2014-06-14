@@ -8,27 +8,49 @@
 Ext.define('DL.controller.RegistrationForm', {
     extend: 'Ext.app.Controller',
 
+    requires:[
+        'Ext.Ajax'
+    ],
+
     config: {
         refs: {
-            searchPanel:{
-                xtype:'search-document-panel',
-                selector: 'search-document-panel',
+            registrationForm:{
+                xtype:'registration-form',
+                selector: 'registration-form',
                 autoCreate:true
-            },
-            closeSearchPanelBtn:'component[itemId=close-search-panel-btn]',
-
-            titlebar: {
-                xtype: 'xtitlebar',
-                selector: 'xtitlebar',
-                autoCreate:true
-            },
-            searchField: 'xtitlebar component[itemId= documentSearch]'
+            }
         },
         control: {
-
+            registrationForm: {
+                submitRegistrationForm: 'sendRegistrationRequest'
+            }
 
         }
+    },
+
+    sendRegistrationRequest: function(data){
+        var me = this;
+        Ext.Ajax.request({
+            method: 'POST',
+            url: '/register',
+            params: {
+                password: data.password,
+                firstName:data.name,
+                secondName: data.surname,
+                email: data.email,
+                role: data.role,
+                status: data.status,
+                sex: data.sex,
+                birthDay: data.birthday
+            },
+            success: function(response){
+                var text = response.responseText;
+
+            },
+            error:function(){
+//                me.closeRegistrationForm()
+            }
+        })
     }
 
 });
-;

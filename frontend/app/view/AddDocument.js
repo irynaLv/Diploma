@@ -16,7 +16,7 @@ Ext.define('DL.view.AddDocument', {
             directionLock: true
         },
 //        modal: true,
-        maxWidth: '18em',
+        maxWidth: '20em',
         maxHeight: '22em',
         width: '90%',
         height: '80%',
@@ -50,12 +50,12 @@ Ext.define('DL.view.AddDocument', {
                 itemId: 'type',
                 usePicker: true,
                 options: [
-                    {text: 'Навчальні матеріали',  value: 1},
-                    {text: 'Нормативні документи', value: 2},
-                    {text: 'Протоколи засідань',  value: 3},
-                    {text: 'Інформаційні матеріали',  value: 4},
-                    {text: 'Оголошення',  value: 5},
-                    {text: 'Інше',  value: 6}
+                    {text: 'Навчальні матеріали',  value: 0},
+                    {text: 'Нормативні документи', value: 1},
+                    {text: 'Протоколи засідань',  value: 2},
+                    {text: 'Інформаційні матеріали',  value: 3},
+                    {text: 'Оголошення',  value: 4},
+                    {text: 'Інше',  value: 5}
                 ]
             },
             {
@@ -81,12 +81,14 @@ Ext.define('DL.view.AddDocument', {
                                 xtype: 'checkboxfield',
                                 labelWidth: '70%',
                                 itemId: 'worker',
+                                value:0,
                                 label: 'Працівники'
                             },
                             {
                                 xtype: 'checkboxfield',
                                 labelWidth: '70%',
                                 itemId: 'student',
+                                value: 1,
                                 label: 'Студенти'
 
                             },
@@ -94,12 +96,14 @@ Ext.define('DL.view.AddDocument', {
                                 xtype: 'checkboxfield',
                                 labelWidth: '70%',
                                 label: 'Власник',
+                                value: 2,
                                 itemId: 'owner'
                             },
                             {
                                 xtype: 'checkboxfield',
                                 labelWidth: '70%',
                                 label: 'Всі',
+                                value: 3,
                                 itemId: 'allUsers'
                             }
 
@@ -250,7 +254,7 @@ Ext.define('DL.view.AddDocument', {
 
 
     setFileHidden: function(field, newValue, oldValue){
-        if(newValue == 5){
+        if(newValue == 4){
             this.fileContainer.setHidden(true);
         }else{
             this.fileContainer.setHidden(false);
@@ -278,6 +282,7 @@ Ext.define('DL.view.AddDocument', {
         var allUserAccess =this.allUserAccess.getChecked();
         var file = this.screenshot;
         var error = false;
+        var accessValue = [];
         if(!name){
             this.name.addCls('error');
             error = true;
@@ -296,6 +301,7 @@ Ext.define('DL.view.AddDocument', {
         if(workerAccess || studentAccess || owner || allUserAccess){
             this.accessTitle.element.removeCls('error');
             this.accessTitle.removeCls('error');
+            accessValue = this.getAccessValue();
 
         }else{
             this.accessTitle.addCls('error');
@@ -312,8 +318,33 @@ Ext.define('DL.view.AddDocument', {
         }
 
         if(!error){
-            this.fireEvent('uploadNewFile', name, description, type);
+            var data = {
+                name: name,
+                description : description,
+                type:type,
+                access : accessValue,
+                file: file
+
+            }
+            this.fireEvent('uploadNewFile', data);
         }
+    },
+
+    getAccessValue: function(){
+        var array = [];
+       if(this.workerAccess.getChecked()){
+           array.push(this.workerAccess.getValue())
+       };
+        if(this.studentAccess.getChecked()){
+            array.push(this.studentAccess.getValue())
+        };
+        if(this.owner.getChecked()){
+            array.push(this.owner.getValue())
+        };
+        if(this.allUserAccess.getChecked()){
+            array.push(this.allUserAccess.getValue())
+        };
+         return array;
     },
 
     closeAddDocumentBtn: function(){

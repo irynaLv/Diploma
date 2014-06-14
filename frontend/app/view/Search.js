@@ -18,7 +18,7 @@ Ext.define('DL.view.Search', {
 //        modal: true,
         flex: 1,
 //        hideOnMaskTap:false,
-        maxWidth: '18em',
+        maxWidth: '24em',
         maxHeight: '22em',
         width: '90%',
         height: '80%',
@@ -46,26 +46,24 @@ Ext.define('DL.view.Search', {
                                 itemId: 'date-create-from',
                                 cls: 'date-create-from',
                                 label: 'від',
-//                                width: '100%',
-                                picker: {
-                                    yearFrom: 2010,
-                                    yearTo  : new Date().getFullYear()
-
-                                },
-                                value: new Date()
-                            },
-                            {
-                                xtype: 'datepickerfield',
-                                itemId: 'date-create-to',
-                                cls: 'date-create-to',
-                                label: 'до',
-//                                width: '100%',
                                 picker: {
                                     yearFrom: 2010,
                                     yearTo  : new Date().getFullYear()
 
                                 },
                                 value: new Date(new Date(new Date().setMonth(new Date().getMonth()-1)).setHours(0, 0, 0))
+                            },
+                            {
+                                xtype: 'datepickerfield',
+                                itemId: 'date-create-to',
+                                cls: 'date-create-to',
+                                label: 'до',
+                                picker: {
+                                    yearFrom: 2010,
+                                    yearTo  : new Date().getFullYear()
+
+                                },
+                                value: new Date()
                             }
                         ]
                     }
@@ -77,7 +75,7 @@ Ext.define('DL.view.Search', {
                 label: 'Власник документа',
                 labelWidth:'30%',
                 placeHolder:"Прізвище власника",
-                itemId: 'status',
+                itemId: 'owner',
                 cls: 'title owner'
 
             },
@@ -103,26 +101,36 @@ Ext.define('DL.view.Search', {
                             {
                                 xtype: 'checkboxfield',
                                 labelWidth: '60%',
+                                value: 0,
+                                itemId: 'trainingMaterials',
                                 label: 'Навчальні матеріали'
                             },
                             {
                                 xtype: 'checkboxfield',
                                 labelWidth: '60%',
+                                value: 1,
+                                itemId: 'regulations',
                                 label: 'Нормативні документи'
                             },
                             {
                                 xtype: 'checkboxfield',
                                 labelWidth: '60%',
+                                value: 2,
+                                itemId: 'minutesOfMeetings',
                                 label: 'Протоколи засідань'
                             },
                             {
                                 xtype: 'checkboxfield',
                                 labelWidth: '60%',
+                                value: 3,
+                                itemId:'informationMaterials',
                                 label: 'Інформаційні матеріали'
                             },
                             {
                                 xtype: 'checkboxfield',
                                 labelWidth: '60%',
+                                value: 4,
+                                itemId:'advertisement',
                                 label: 'Оголошення'
                             }
                         ]
@@ -140,8 +148,8 @@ Ext.define('DL.view.Search', {
                         cls:'search-btn',
                         itemId:'search-btn',
                         text: 'Пошук',
-                        width: '35%'
-//                        maxWidth: '5em'
+                        width: '35%',
+                        handler: 'advancedSearch'
                     },
                     {
                         xtype: 'spacer',
@@ -162,16 +170,49 @@ Ext.define('DL.view.Search', {
     initComponent:function(){
         this.dateFrom = new Date();
         this.dateTo = new Date(new Date(new Date().setMonth(new Date().getMonth()-1)).setHours(0, 0, 0));
-//        this.on('painted', function(){
-//            this.on('hide', function(){
-////                this.destroy();
-//            })
-//        });
-//        this.down('#cancel-btn').on('tap', this.closeSearchPanel, this);
+
+        this.down('#search-btn').setScope(this);
+        this.down('#search-btn').setHandler(this.advancedSearch);
         this.callParent();
     },
 
-    closeSearchPanel: function(){
-//        this.fireEvent('closePanel', this)
+    advancedSearch: function(){
+        var dateFrom = this.down("#date-create-from").getValue();
+        var dateTo =  this.down("#date-create-to").getValue();
+        var owner =  this.down('#owner').getValue();
+        var type = this.getType();
+        var tags = {
+            owner: owner,
+            type: type
+        };
+        var timePeriod = {
+            from:dateFrom,
+            to:dateTo
+        }
+
+        this.fireEvent('sendAdvancedSearch', tags, timePeriod )
+    },
+
+    getType: function(){
+        var checkedValue = [];
+        if(this.down('#trainingMaterials').getChecked()){
+            checkedValue.push(this.down('#trainingMaterials').getValue())
+        }
+        if(this.down('#regulations').getChecked()){
+            checkedValue.push(this.down('#regulations').getValue())
+        }
+        if(this.down('#minutesOfMeetings').getChecked()){
+            checkedValue.push(this.down('#minutesOfMeetings').getValue())
+        }
+        if(this.down('#informationMaterials').getChecked()){
+            checkedValue.push(this.down('#informationMaterials').getValue())
+        }
+        if(this.down('#advertisement').getChecked()){
+            checkedValue.push(this.down('#advertisement').getValue())
+        }
+        return checkedValue;
     }
+
+
+
 })

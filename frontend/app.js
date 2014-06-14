@@ -25,7 +25,6 @@ Ext.application({
     views: [
 
         "Main",
-        'Menu',
         'XTitlebar',
         'LoginForm',
         'RegistrationForm',

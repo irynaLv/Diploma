@@ -43,7 +43,6 @@ Ext.define('DL.controller.Login', {
 
             }
         })
-        console.log('Submit Login Form');
     }
 
 });

@@ -2,7 +2,6 @@ Ext.define('DL.view.Main', {
     extend: 'Ext.Container',
     xtype: 'main',
     requires: [
-        'DL.view.Menu',
         'DL.view.XTitlebar'
     ],
     config: {

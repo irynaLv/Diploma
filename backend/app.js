@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 
 // Routes
 var users = require('./routes/users');
+var documents = require('./routes/documents');
 
 var app = express();
 
@@ -30,7 +31,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use('/users', users);
+app.use('/api/users', users);
+app.use('/api/documents', documents);
 
 console.log(process.env.PRODUCTION);
 

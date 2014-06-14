@@ -63,14 +63,14 @@ Ext.define('DL.view.XTitlebar', {
                                 width: '50%',
                                 icon:'../../resources/images/document_add.png',
                                 itemId: 'add-document-btn',
-                                hidden: true,
+//                                hidden: true,
                                 scope:this
                             },
                             {
                                 xtype: 'button',
                                 cls: 'user-document-btn',
                                 width: '50%',
-                                hidden: true,
+//                                hidden: true,
                                 icon:'../../resources/images/My_Documents-64.png',
                                 itemId: 'user-document-btn'
                             }
@@ -103,8 +103,6 @@ Ext.define('DL.view.XTitlebar', {
         this.down('#add-document-btn').setScope(this);
         this.down('#login-btn').setHandler(this.getLoginPanel);
         this.down('#add-document-btn').setHandler(this.addDocumentPanel);
-        this.down('#documentSearch').on('focus', this.createTagPanel, this);
-//        this.down('#documentSearch').on('blur', this.destroySearchPanel, this);
 
     },
     addDocumentPanel: function(){
@@ -120,19 +118,5 @@ Ext.define('DL.view.XTitlebar', {
             width: '17em'
         })
         panel.showBy(this.down('#login-btn'));
-    },
-
-    createTagPanel: function(){
-        if(!this.searchPanel){
-            this.searchPanel = Ext.create('DL.view.Search');
-            this.searchPanel.showBy(this.down('#documentSearch'));
-        }
-
-
-
-    },
-    destroySearchPanel: function(){
-//        this.searchPanel.destroy();
-//        this.searchPanel = null;
     }
 })

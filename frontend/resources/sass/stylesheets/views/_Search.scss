@@ -1,5 +1,8 @@
 .search-document-panel{
   background: #000000;
+  .x-body{
+    background-color: #000000!important;
+  }
   .x-panel-inner{
     font-size: .9em;
     padding: .5em;
@@ -13,34 +16,57 @@
     }
     .date-container{
       //height: 1.5em;
-      margin: .3em 0;
+      //      margin: .3em 0;
+      .title{
+        padding-top: 1em;
+      }
+      .x-field-select{
+        min-height: 1.5em;
+        margin-bottom: .2em;
+
+      }
     }
     .owner{
-      padding: .6em 0;
+      padding: .3em 0;
       .x-form-label{
         font-size: 1.2em;
         padding: 0;
+        white-space: normal;
       }
       &.x-field-focused{
         .x-form-field{
           //width: 80%;
         }
       }
+      .x-component-outer{
+        .x-input-el{
+          margin-top: .5em;
+          margin-left: 0.5em;
+        }
+      }
     }
     .document-type{
       .title{
-        line-height: 10em;
+        padding-top: 5em;
       }
       .types{
+        padding-left: .5em;
         .x-form-label{
           overflow: visible;
+          white-space: inherit;
+        }
+        .x-component-outer{
+          .x-field-mask::after{
+            line-height: 1em;
+          }
         }
       }
     }
     .title{
       color: #fff;
       font-weight: bold;
-      line-height: 1.7em;
+      font-size: .8em;
+      text-align: center;
     }
     .x-field-select{
       width: 100% !important;
@@ -68,7 +94,18 @@
       min-height: 1.5em;
     }
   }
-  .search-btn{
+  .btn-container {
+    .x-inner{
+      display: flex;
+      justify-content:  space-between;;
+//      margin-right: .5em;
+    }
+    .cancel-btn{
+      margin: .1em .2em;
+    }
+  }
 
+  .search-btn{
+    margin: .1em;
   }
 }

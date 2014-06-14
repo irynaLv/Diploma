@@ -9,11 +9,19 @@ Ext.define('DL.view.Search', {
     config: {
         layout: {
             type: 'vbox',
-            align: 'left'
+            align:'stretch'
+        },
+        scrollable: {
+            direction: 'vertical',
+            directionLock: true
         },
 //        modal: true,
         flex: 1,
-        hideOnMaskTap:false,
+//        hideOnMaskTap:false,
+        maxWidth: '18em',
+        maxHeight: '22em',
+        width: '90%',
+        height: '80%',
         cls: 'search-document-panel',
         items:[
             {
@@ -24,13 +32,13 @@ Ext.define('DL.view.Search', {
                     {
                         xtype: 'container',
                         cls: 'title',
-                        width: '45%',
+                        width: '30%',
                         html: 'Дата створення'
                     },
                     {
                         xtype: 'container',
                         layout:'vbox',
-                        width:'50%',
+                        width:'70%',
 
                         items:[
                             {
@@ -38,7 +46,7 @@ Ext.define('DL.view.Search', {
                                 itemId: 'date-create-from',
                                 cls: 'date-create-from',
                                 label: 'від',
-                                width: '100%',
+//                                width: '100%',
                                 picker: {
                                     yearFrom: 2010,
                                     yearTo  : new Date().getFullYear()
@@ -51,7 +59,7 @@ Ext.define('DL.view.Search', {
                                 itemId: 'date-create-to',
                                 cls: 'date-create-to',
                                 label: 'до',
-                                width: '100%',
+//                                width: '100%',
                                 picker: {
                                     yearFrom: 2010,
                                     yearTo  : new Date().getFullYear()
@@ -65,9 +73,9 @@ Ext.define('DL.view.Search', {
             },
             {
                 xtype: 'textfield',
-                width: '100%',
+//                width: '100%',
                 label: 'Власник документа',
-                labelWidth:'45%',
+                labelWidth:'30%',
                 placeHolder:"Прізвище власника",
                 itemId: 'status',
                 cls: 'title owner'
@@ -83,38 +91,38 @@ Ext.define('DL.view.Search', {
 
                         xtype: 'container',
                         cls: 'title',
-                        width: '45%',
+                        width: '30%',
                         html:'Тип документа'
                     },
                     {
                         xtype: 'container',
-                        width: '50%',
+                        width: '70%',
                         cls: 'types',
                         layout: 'vbox',
                         items:[
                             {
                                 xtype: 'checkboxfield',
-                                labelWidth: '80%',
+                                labelWidth: '60%',
                                 label: 'Навчальні матеріали'
                             },
                             {
                                 xtype: 'checkboxfield',
-                                labelWidth: '80%',
+                                labelWidth: '60%',
                                 label: 'Нормативні документи'
                             },
                             {
                                 xtype: 'checkboxfield',
-                                labelWidth: '80%',
+                                labelWidth: '60%',
                                 label: 'Протоколи засідань'
                             },
                             {
                                 xtype: 'checkboxfield',
-                                labelWidth: '80%',
+                                labelWidth: '60%',
                                 label: 'Інформаційні матеріали'
                             },
                             {
                                 xtype: 'checkboxfield',
-                                labelWidth: '80%',
+                                labelWidth: '60%',
                                 label: 'Оголошення'
                             }
                         ]
@@ -124,18 +132,28 @@ Ext.define('DL.view.Search', {
             {
                 xtype: 'container',
                 layout: 'hbox',
+                width: '100%',
+                cls: 'btn-container',
                 items:[
                     {
                         xtype: 'button',
                         cls:'search-btn',
-                        text: 'Пошук'
+                        itemId:'search-btn',
+                        text: 'Пошук',
+                        width: '35%'
+//                        maxWidth: '5em'
+                    },
+                    {
+                        xtype: 'spacer',
+                        width: '28%'
                     },
                     {
                         xtype: 'button',
                         text: 'Закрити',
                         cls: 'cancel-btn',
-                        itemId: 'cancel-btn'
-                        //                        width:'30%'
+                        itemId: 'cancel-btn',
+                        width: '35%'
+//                        maxWidth: '5em'
                     }
                 ]
             }
@@ -144,11 +162,16 @@ Ext.define('DL.view.Search', {
     initComponent:function(){
         this.dateFrom = new Date();
         this.dateTo = new Date(new Date(new Date().setMonth(new Date().getMonth()-1)).setHours(0, 0, 0));
-        this.on('painted', function(){
-            this.on('hide', function(){
-                this.destroy();
-            })
-        })
+//        this.on('painted', function(){
+//            this.on('hide', function(){
+////                this.destroy();
+//            })
+//        });
+        this.down('#cancel-btn').on('tap', this.closeSearchPanel, this);
         this.callParent();
+    },
+
+    closeSearchPanel: function(){
+        this.fireEvent
     }
 })

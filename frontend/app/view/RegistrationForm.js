@@ -10,10 +10,17 @@ Ext.define('DL.view.RegistrationForm', {
         emailValue: null,
         layout: {
             type: 'vbox',
-            align: 'left'
+            align:'stretch'
         },
-        modal: true,
-//        hideOnMaskTap:true,
+        scrollable: {
+            direction: 'vertical',
+            directionLock: true
+        },
+        flex: 1,
+        maxWidth: '18em',
+        maxHeight: '25.5em',
+        width: '76%',
+        height: '85%',
         cls: 'registration-panel',
 
         items: [
@@ -63,6 +70,7 @@ Ext.define('DL.view.RegistrationForm', {
                         label: 'Стать',
                         itemId: 'sex',
                         usePicker: true,
+                        zIndex : 100,
 //                        height: '7em',
                         options: [
                             {text: 'Чоловіча',  value: 1},
@@ -145,20 +153,19 @@ Ext.define('DL.view.RegistrationForm', {
                 items:[
                     {
                         xtype: 'button',
-                        text: 'Закрити',
-                        cls: 'cancel-btn',
-                        itemId: 'cancel-btn'
+                        text: 'OK',
+                        cls: 'submit-btn',
+                        itemId: 'submit-btn'
 //                        width:'30%'
                     },
                     {
                         xtype: 'spacer',
                         width: '5.5em'
-                    },
-                    {
+                    },{
                         xtype: 'button',
-                        text: 'OK',
-                        cls: 'submit-btn',
-                        itemId: 'submit-btn'
+                        text: 'Закрити',
+                        cls: 'cancel-btn',
+                        itemId: 'cancel-btn'
 //                        width:'30%'
                     }
                 ]
@@ -184,16 +191,28 @@ Ext.define('DL.view.RegistrationForm', {
                 this.destroy();
             })
         })
-
+        this.down('#sex').on('focus', this.setCorrectZIndex, this);
     },
 
     setStatusVisible: function(){
-      var value =  this.down('#role').getValue();
+        var value =  this.down('#role').getValue();
         if(value == 2){
             this.down('#status').setHidden(false);
         }else{
             this.down('#status').setHidden(true);
         }
+    },
+
+    setCorrectZIndex: function(el, e, eOpts){
+        Ext.defer(function(){
+            var picker = el.picker;
+            if(picker){
+                var zIndex = picker.getZIndex();
+                picker.setZIndex(zIndex+1);
+            }
+        }, 20, this)
+
+
     },
 
     submitRegistrationForm:function(name, surname, email, password, birthday, status, role, sex){

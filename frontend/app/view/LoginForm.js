@@ -41,23 +41,24 @@ Ext.define('DL.view.LoginForm', {
 
                     {
                         xtype: 'button',
-                        itemId: 'registration-btn',
-                        text:"Реєстрація",
-                        cls:'singup-btn',
-//                        width:'8%',
-                        handler:'getRegistrationForm'
+                        text: 'OK',
+                        cls: 'submit-btn',
+                        itemId: 'submit-btn',
+                        handler: 'submitLoginForm',
+                        width: '30%'
                     },
                     {
                         xtype: 'spacer',
                         width: '5.6em'
                     },
                     {
+
                         xtype: 'button',
-                        text: 'OK',
-                        cls: 'submit-btn',
-                        itemId: 'submit-btn',
-                        handler: 'submitLoginForm',
-                        width:'30%'
+                        itemId: 'registration-btn',
+                        text:"Реєстрація",
+                        cls:'singup-btn',
+//                        width:'8%',
+                        handler:'getRegistrationForm'
                     }
                 ]
 

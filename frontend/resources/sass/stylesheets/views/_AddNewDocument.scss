@@ -1,4 +1,7 @@
 .add-document-panel{
+  .x-body{
+    background-color: #000000!important;
+  }
   .x-panel-inner{
     background-color: #141414 !important;
     border-radius: 0 !important;
@@ -16,7 +19,7 @@
     }
   }
   .name, .type{
-    margin: .5em 0;
+    margin: .25em 0;
     min-height: 1.5em;
     .x-form-label{
       border-radius: 0;
@@ -29,6 +32,7 @@
       height: 1.5em;
       min-height: 1.5em;
       .x-input-el{
+        font-size: .8em;
         min-height: 1.5em;
         height: 1.5em;
         padding: 0.1em .6em;
@@ -36,11 +40,11 @@
     }
   }
   .description{
-    margin: .5em 0;
+    margin: .25em 0;
     .x-form-label{
       color: #fff;
       background: #141414;
-      padding: 0.1em .6em;
+      //      padding: 0.1em .6em;
     }
     .x-component-outer{
       .x-input-el{
@@ -49,35 +53,53 @@
     }
   }
   .role{
-    margin: .5em 0;
+    //    margin: .25em 0;
     .title{
-      line-height: 8em;
+     font-weight: bold;
       color: #fff;
-      padding: 0.1em 0 .1em .6em;
+      padding: 2em 0 .1em .6em;
+      font-size: .9em;
     }
     .x-field-checkbox{
       min-height: 1.5em;
+      height: 1.5em;
+
     }
     .x-form-label{
       border-radius: 0;
-      padding-left: 1em;
+      //      padding-left: 1em;
+      padding: 0 0 0 1em;
     }
     .x-component-outer{
       background: #141414;
+      .x-input-el{
+        min-height: 1.5em;
+        height: 1.5em;
+      }
+      .x-field-mask::after{
+        line-height: 1em;
+        font-size: 1.4em;
+      }
 
     }
   }
   .file{
+    min-height: 1.5em;
     background: #141414;
+    .x-form-label{
+      //      min-height: 1.5em;
+      //      height: 1.5em;
+      //      padding: 0 .6em;
+    }
     input{
       background: #141414;
 
     }
     .x-component-outer{
-       .x-input-file{
-         color: #fff;
+      .x-input-file{
+        color: #fff;
 
-       }
+      }
     }
   }
   .x-form-label{
@@ -85,7 +107,11 @@
     color: #fff;
     border-radius: 0;
     background: #141414;
-    padding: 0.1em .6em;
+    //    padding: 0.1em .6em;
+  }
+  .btn-container{
+    position: relative;
+    width: 100%;
   }
   .x-component-outer{
 
@@ -93,7 +119,28 @@
       padding: 0.1em .6em;
     }
   }
-  .upload-btn{
+  .clear-btn{
+    //    position: absolute;
+    //    right: 0;
+  }
+  .upload-btn, .clear-btn, .close-btn{
     border: 1px solid #ffb94b;
+//    background: #000;
+    border-radius: 0!important;
+    padding: 0 .1em;
+    margin-bottom: 1em;
+    &.x-button-pressed{
+      background-image: none;
+      background: #000;
+    }
+    .x-button-label{
+      font-size: .8em;
+      white-space: inherit;
+    }
+  }
+
+  .clear-btn, .close-btn{
+    width: 50%;
+
   }
 }

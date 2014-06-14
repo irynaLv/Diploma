@@ -1,40 +1,35 @@
-var http = require('http');
-var mongoose = require('mongoose');
-var express = require('express');
-var path = require('path');
-var favicon = require('static-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var path = require('path'),
+    express = require('express'),
+    app = express(),
+    port = process.env.PORT || 5000,
+    mongoose = require('mongoose'),
+    passport = require('passport'),
+    cookieParser = require('cookie-parser'),
+    bodyParser = require('body-parser'),
+    session = require('express-session');
 
 // Routes
-var users = require('./routes/users');
-var documents = require('./routes/documents');
+var configDB = require('./config/database.js');
 
-var app = express();
+// configuration ===============================================================
+mongoose.connect(configDB.url); // connect to our database
 
+require('./config/passport')(passport); // pass passport for configuration
 
-mongoose.connect(process.env.DB_URL);
+// set up our express application
+app.set('view engine', 'jade'); // set up ejs for templating
 
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function callback () {
-    console.log('Connected');
-});
-
-
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
-app.use(favicon());
-app.use(logger('dev'));
+app.use(cookieParser()); // read cookies (needed for auth)
+app.use(bodyParser()); // get information from html forms
+app.use(session({ secret: 'diplomadiplomadiploma' })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use('/api/users', users);
-app.use('/api/documents', documents);
 
-console.log(process.env.PRODUCTION);
+// routes ======================================================================
+require('./routes/router.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 if (process.env.PRODUCTION) {
     console.log('Production');
@@ -44,19 +39,14 @@ if (process.env.PRODUCTION) {
     app.use(express.static(path.join(__dirname, '..', 'frontend')));
 }
 
-/// catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
-/// error handlers
-
-// development error handler
-// will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
+    app.use(function (err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
@@ -65,9 +55,7 @@ if (app.get('env') === 'development') {
     });
 }
 
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,
@@ -75,11 +63,13 @@ app.use(function(err, req, res, next) {
     });
 });
 
-app.all('*', function(req, res, next) {
+app.all('*', function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     next();
 });
 
-var port = port = process.env.PORT || 5000;
 app.listen(port);
+console.log('The magic happens on port ' + port);
+
+

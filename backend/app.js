@@ -7,9 +7,20 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// Routes
 var users = require('./routes/users');
 
 var app = express();
+
+
+mongoose.connect(process.env.DB_URL);
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback () {
+    console.log('Connected');
+});
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

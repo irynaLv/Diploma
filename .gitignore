@@ -218,3 +218,4 @@ pip-log.txt
 #Others
 .idea/
 .sass-cache/
+node_modules

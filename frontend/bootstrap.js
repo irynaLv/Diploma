@@ -46,12 +46,12 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLResultSet": "touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLResultSetRowList": "touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLTransaction": "touch/src/device/sqlite/Sencha.js",
-  "Ext.draw.engine.SvgContext.Gradient": "touch/src/draw/engine/SvgContext.js"
+  "Ext.draw.engine.SvgContext.Gradient": "touch/src/draw/engine/SvgContext.js",
+  "TL": "app"
 });
 Ext.ClassManager.addNameAlternateMappings({
   "DL.controller.Main": [],
   "DL.controller.RegistrationForm": [],
-  "DL.controller.Search": [],
   "DL.model.User": [],
   "DL.store.Users": [],
   "DL.view.AddDocument": [],
@@ -785,12 +785,12 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
-  ]
+  ],
+  "TL.controller.Search": []
 });
 Ext.ClassManager.addNameAliasMappings({
   "DL.controller.Main": [],
   "DL.controller.RegistrationForm": [],
-  "DL.controller.Search": [],
   "DL.model.User": [],
   "DL.store.Users": [],
   "DL.view.AddDocument": [
@@ -1762,7 +1762,8 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
-  "Ext.viewport.WindowsPhone": []
+  "Ext.viewport.WindowsPhone": [],
+  "TL.controller.Search": []
 });
 
 

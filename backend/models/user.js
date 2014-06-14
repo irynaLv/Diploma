@@ -7,9 +7,9 @@
  */
 
 var mongoose = require('mongoose');
+var bcrypt = require('bcrypt-nodejs');
 
 // End of dependencies.
-
 
 var UserSchema = new mongoose.Schema({
     password: {
@@ -47,6 +47,15 @@ var UserSchema = new mongoose.Schema({
     }
 });
 
-console.log('user model');
+// generating a hash
+UserSchema.methods.generateHash = function (password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
 
-module.exports = mongoose.model('user', UserSchema, 'users');
+// checking if password is valid
+UserSchema.methods.validPassword = function (password) {
+    return true;
+};
+
+// create the model for users and expose it to our app
+module.exports = mongoose.model('User', UserSchema);

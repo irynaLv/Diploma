@@ -4,8 +4,7 @@
 Ext.define('DL.view.LoginForm', {
     extend:'Ext.Panel',
     xtype: 'login-form',
-    alias: 'widget.login-form',
-
+    alias: 'widget.loginForm',
 
     config: {
         layout: {
@@ -86,46 +85,24 @@ Ext.define('DL.view.LoginForm', {
     submitLoginForm: function submitLoginForm(){
         var email = this.down('#email').getValue();
         var password = this.down('#password').getValue();
-        var emailField = this.down('#email');
-        var passwordField = this.down('#password') ;
-        var error = false;
-        if(email != ""){
-
-            if(email != "" && !this.validateEmail(email)){
-                emailField.addCls('error');
-                error = true;
-            } else{
-                if(emailField.element.hasCls('error')){
-                    emailField.element.removeCls('error');
-                    emailField.removeCls('error');
-                }
+        Ext.Ajax.request({
+            method: 'POST',
+            url: 'http://localhost:3000/login',
+            params: {
+                password: password,
+                email: email
+            },
+            success: function(response){
+                var text = response.responseText;
+                // process server response here
+//                me.closeRegistrationForm()
+            },
+            error:function(){
+//                me.closeRegistrationForm()
             }
-        } else{
-            emailField.addCls('error');
-            error = true;
-        }
-
-        if(password == ""){
-            passwordField.addCls('error');
-            error = true;
-        } else{
-            if(passwordField.element.hasCls('error')){
-                passwordField.element.removeCls('error');
-                passwordField.removeCls('error');
-            };
-
-        }
-        if(!error){
-            this.fireEvent('sendLoginForm', email, password);
-        }
-
-
+        })
+        console.log('Submit Login Form');
     },
-    validateEmail: function validateEmail(email){
-        var re = /\S+@\S+\.\S+/;
-        return re.test(email);
-    },
-
     getRegistrationForm:function(){
         var email = null;
         if(this.down('#email').getValue().length > 0){

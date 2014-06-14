@@ -23,7 +23,7 @@
         background: #000;
         border: none;
         .x-field-text{
-          margin: 0.4em .2em;
+          margin: 0.2em;
           height: 2em;
           min-height: 2em;
           border-radius: 0;
@@ -39,15 +39,7 @@
           }
           .x-input-el{
             min-height: 1.5em;
-//            border: 3px solid #000;
           }
-
-          &.error{
-             .x-form-label{
-               color:  #F80930;
-             }
-          }
-
         }
       }
     }

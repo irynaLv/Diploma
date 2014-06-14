@@ -1,11 +1,7 @@
 /**
- * Created with JetBrains WebStorm.
- * User: ikush
- * Date: 4/8/14
- * Time: 6:45 PM
- * To change this template use File | Settings | File Templates.
+ * Created by ikush on 6/14/2014.
  */
-Ext.define('DL.controller.RegistrationForm', {
+Ext.define('DL.controller.AddDocument', {
     extend: 'Ext.app.Controller',
 
     config: {
@@ -31,4 +27,3 @@ Ext.define('DL.controller.RegistrationForm', {
     }
 
 });
-;

@@ -216,5 +216,5 @@ pip-log.txt
 .idea/
 
 #Others
-.idea/*
-.sass-cache/*
+.idea/
+.sass-cache/

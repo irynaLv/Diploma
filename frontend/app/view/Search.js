@@ -159,7 +159,7 @@ Ext.define('DL.view.Search', {
                         xtype: 'button',
                         text: 'Закрити',
                         cls: 'cancel-btn',
-                        itemId: 'close-search-panel-btn',
+                        itemId: 'cancel-btn',
                         width: '35%'
 //                        maxWidth: '5em'
                     }

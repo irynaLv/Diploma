@@ -1,16 +1,12 @@
-var express = require('express'),
-    mongoose = require('mongoose'),
-    db = mongoose.createConnection(process.env.DB_URL),
+var User = require('../models/user'),
+    express = require('express'),
     router = express.Router();
 
-var userSchema = mongoose.Schema({
-    login: String,
-    password: String
-});
-
-/* GET users listing. */
 router.get('/', function(req, res) {
-  res.send('respond with a resource');
+    var query = User.find({});
+    query.exec(function (err, doc) {
+        res.json(doc);
+    });
 });
 
 module.exports = router;

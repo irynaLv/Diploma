@@ -139,6 +139,7 @@
 .x-picker{
   background: #3C3C3C;
   border-top: #000;
+  z-index: 100!important;
   .x-toolbar{
     background: #363839; /* Old browsers */
     background: -moz-linear-gradient(top,  #363839 0%, #1d1d1e 0%, #303133 61%, #1d1d1e 99%); /* FF3.6+ */

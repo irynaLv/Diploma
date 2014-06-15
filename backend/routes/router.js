@@ -20,10 +20,22 @@ module.exports = function (app, passport) {
         });
     });
     app.post('/api/document', function(req, res) {
-        var doc = new Document(req.body);
+        var body = req.body,
+            obj = {
+                title: body.title || 'No title',
+                owner: body.owner || 'No owner',
+                accessLayer: body.accessLayer || 0,
+                description: body.description || 'No description',
+                fileName: body.fileName || 'Test.txt',
+                uploadDate: new Date(),
+                updateDate: new Date(),
+                tags: body.tags || ['doc'],
+                type: body.type || 'doc'
+            },
+            doc = new Document(obj);
         doc.save(function (err, doc) {
             if (!err && doc) {
-                res.json(doc[0]);
+                res.json(doc);
             } else {
                 res.status(404);
                 res.send();

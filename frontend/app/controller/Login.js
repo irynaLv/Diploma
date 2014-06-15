@@ -61,6 +61,7 @@ Ext.define('DL.controller.Login', {
                 return;
             }
         }
+        localStorage.setItem('userData', data);
         this.getLoginBtn().setHidden(true);
         this.getNewDocumentBtn().setHidden(false);
         this.getUserDocumentBtn().setHidden(false);
@@ -77,10 +78,11 @@ Ext.define('DL.controller.Login', {
             },
             success: function(response){
                 var text = response.responseText;
-                this.getLoginBtn().setHidden(false);
-                this.getNewDocumentBtn().setHidden(true);
-                this.getUserDocumentBtn().setHidden(true);
-                this.getLogoutBtn().setHidden(true);
+                me.getLoginBtn().setHidden(false);
+                me.getNewDocumentBtn().setHidden(true);
+                me.getUserDocumentBtn().setHidden(true);
+                me.getLogoutBtn().setHidden(true);
+                localStorage.removeItem('userData');
             },
             error:function(){
 

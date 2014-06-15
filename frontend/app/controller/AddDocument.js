@@ -29,7 +29,7 @@ Ext.define('DL.controller.AddDocument', {
     uploadNewDocument: function(data){
         Ext.Ajax.request({
             method: 'POST',
-            url: '/document/:id',
+            url: '/api/document',
             params: {
                 name: data.name,
                 description : data.description,

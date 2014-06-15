@@ -244,7 +244,7 @@ Ext.define('DL.view.RegistrationForm', {
         var name = this.down("#name").getValue();
         var surname = this.down("#surname").getValue();
         var email = this.down("#email").getValue();
-        var checkEmail = this.down("#checkEmail").getValue();
+//        var checkEmail = this.down("#checkEmail").getValue();
         var password = this.down("#password").getValue();
         var checkPassword = this.down("#checkPassword").getValue();
         var birthday = this.down("#birthday").getValue();

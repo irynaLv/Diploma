@@ -36,7 +36,7 @@ Ext.application({
     controllers: [
         // TODO: add controllers here
 
-//        'RegistrationForm',
+        'RegistrationForm',
         'Search',
         'AddDocument',
         'Login'

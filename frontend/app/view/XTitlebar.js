@@ -60,7 +60,7 @@ Ext.define('DL.view.XTitlebar', {
                             {
                                 xtype: 'button',
                                 cls: 'add-document-btn',
-                                width: '50%',
+                                width: '30%',
                                 icon:'../../resources/images/document_add.png',
                                 itemId: 'add-document-btn',
 //                                hidden: true,
@@ -69,10 +69,23 @@ Ext.define('DL.view.XTitlebar', {
                             {
                                 xtype: 'button',
                                 cls: 'user-document-btn',
-                                width: '50%',
+                                width: '30%',
 //                                hidden: true,
                                 icon:'../../resources/images/My_Documents-64.png',
                                 itemId: 'user-document-btn'
+                            },
+                            {
+                                xtype: 'button',
+//                                text: 'Логін',
+                                cls: 'logout-btn',
+                                itemId: 'logout-btn',
+//                                id: 'login-btn',
+                                scope:this,
+                                width:'30%',
+                                icon:'../../resources/images/gnome-logout-icone-3872-128.png',
+//                                maxWidth: '5em',
+//                                hidden: true
+//                                handler:'logoutUser'
                             }
                         ]
                     }
@@ -119,4 +132,6 @@ Ext.define('DL.view.XTitlebar', {
         })
         panel.showBy(this.down('#login-btn'));
     }
+
+
 })

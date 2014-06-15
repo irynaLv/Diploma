@@ -15,7 +15,11 @@ Ext.define('DL.controller.Login', {
                 selector: 'login-form',
                 autoCreate:true
             },
-            submitSearchPanelBtn:'login-form component[itemId=submit-btn]'
+            submitSearchPanelBtn:'login-form component[itemId=submit-btn]',
+            loginBtn:'xtitlebar component[itemId=login-btn]',
+            logoutBtn:'xtitlebar component[itemId=logout-btn]',
+            newDocumentBtn:'xtitlebar component[itemId= add-document-btn]',
+            userDocumentBtn:'xtitlebar component[itemId=user-document-btn]'
 
 
 
@@ -23,12 +27,16 @@ Ext.define('DL.controller.Login', {
         control: {
             loginPanel: {
                 sendLoginForm: 'sendLoginRequest'
+            },
+            logoutBtn:{
+                tap:'logoutUser'
             }
 
         }
     },
 
     sendLoginRequest: function(email, password){
+        var me = this;
         Ext.Ajax.request({
             method: 'POST',
             url: '/login',
@@ -38,6 +46,41 @@ Ext.define('DL.controller.Login', {
             },
             success: function(response){
                 var text = response.responseText;
+                me.loginUser(text);
+            },
+            error:function(){
+
+            }
+        })
+    },
+
+    loginUser: function(data){
+        var arr = data.split('"');
+        for(var i = 0; i<arr.length; i++){
+            if(arr[i] == 'No user found.'){
+                return;
+            }
+        }
+        this.getLoginBtn().setHidden(true);
+        this.getNewDocumentBtn().setHidden(false);
+        this.getUserDocumentBtn().setHidden(false);
+        this.getLogoutBtn().setHidden(false);
+        this.getLoginPanel().destroy();
+    },
+
+    logoutUser:function(){
+        var me = this;
+        Ext.Ajax.request({
+            method: 'GET',
+            url: '/logout',
+            params: {
+            },
+            success: function(response){
+                var text = response.responseText;
+                this.getLoginBtn().setHidden(false);
+                this.getNewDocumentBtn().setHidden(true);
+                this.getUserDocumentBtn().setHidden(true);
+                this.getLogoutBtn().setHidden(true);
             },
             error:function(){
 

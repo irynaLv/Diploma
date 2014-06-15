@@ -1,7 +1,3 @@
-/**
- * Created by ahalych on 6/14/2014.
- */
-
 var Document = require('../models/document'),
     User = require('../models/user');
 

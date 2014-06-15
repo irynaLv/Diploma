@@ -32,7 +32,7 @@ Ext.define('DL.controller.RegistrationForm', {
         var me = this;
         Ext.Ajax.request({
             method: 'POST',
-            url: '/register',
+            url: '/signup',
             params: {
                 password: data.password,
                 firstName:data.name,

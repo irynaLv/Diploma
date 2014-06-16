@@ -36,16 +36,35 @@ Ext.define('DL.view.News', {
                         '<div class="news-item">' +
                         '<div class="main-cont">' +
                             '<div class="date">{[this.getDate(values)]}</div>',
-                            '<div class="news">{[this.getUserTitle(values)]}{owner} завантажив файл {fileName}</div>',
+                            '<div class="news">{[this.getUserTitle(values)]}{owner} {[this.getNewsType(values)]}{fileName}</div>',
                             '<div class="btn-container"> ' ,
-                            '<div class="delete-btn {[this.checkIfUserOwner(values)]}"></div>',
-                                '<div class="download"></div>',
+
+                                '<div class="download" style="display:{[this.checkIfAdvert(values)]}"></div>',
+                                '<div class="delete-btn {[this.checkIfUserOwner(values)]}"></div>',
 
                             '</div>',
                         '</div>',
                     '<div class="description"> {description}</div>',
                     '</div>',
                     {
+                        getNewsType: function(data){
+                            var type = data.type;
+                            if(type == 4){
+                                return ' додав оголошення: '
+                            } else{
+                               return 'завантажив файл'
+                            }
+                        },
+
+                        checkIfAdvert: function(data){
+                            var type = data.type;
+                            if(type == 4){
+                                return 'none'
+                            } else{
+                                return 'block'
+                            }
+                        },
+
                         checkIfUserOwner: function(data){
                              var documentOwner = data.owner;
                             var deleteClass = 'not-owner';
@@ -130,8 +149,7 @@ Ext.define('DL.view.News', {
                 element: 'element',
                 event: 'tap',
                 fn: function (event, target, element, e, eOpts) {
-                    var innerEl = Ext.get(event.delegatedTarget.parentElement);
-                    this.fireEvent('deleteDocument');
+                    this.fireEvent('deleteDocument', event, target, element, e, eOpts);
 
                 }
             },

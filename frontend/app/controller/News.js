@@ -28,7 +28,7 @@ Ext.define('DL.controller.News', {
             newsContainer: {
                 initialize: 'onInitialize',
                 downloadDocument: 'getDocumentById',
-                deleteDocument: 'deleteDocument'
+                deleteDocument: 'deleteDocumentFromList'
             }
         }
     },
@@ -60,13 +60,64 @@ Ext.define('DL.controller.News', {
     },
 
     updateMainPage: function(){
+        var data = [];
         var store = Ext.getStore('documents');
-//        console.log('Store is ', store);
-        store.setData(this.documents);
+        var item = null;
+        var documentOwner = null;
+        if(localStorage.getItem('userData')) {
+            var userData = JSON.parse(localStorage.getItem('userData'));
+            var role = userData.role;
+            var userName = userData.firstName + ' '+userData.secondName;
+            if(role ==2){
+                for(var i=0; i<this.documents.length; i++){
+                    item = this.documents[i];
+                    if(item.accessLayer.indexOf(3) != -1 ||
+                        item.accessLayer.indexOf(1) != -1 ||
+                        item.accessLayer.indexOf('3') != -1 ||
+                        item.accessLayer.indexOf('1') != -1){
+                        data.push(item);
+                    }else if(item.accessLayer.indexOf(2) != -1 || item.accessLayer.indexOf('2') != -1){
+                        documentOwner = item.owner;
+                        if(userName == documentOwner){
+                            data.push(item);
+                        }
+                    }
+                }
+            } else if(role == 1){
+                for(var i=0; i<this.documents.length; i++){
+                    item = this.documents[i];
+                    documentOwner = item.owner;
+                    if(item.accessLayer.indexOf('2') != -1 || item.accessLayer.indexOf(2) != -1){
+                        if(userName == documentOwner){
+                            data.push(item);
+                        }
+
+                    }
+                }
+            }
+        } else{
+            for(var i=0; i<this.documents.length; i++){
+                item = this.documents[i];
+
+                if(item.accessLayer.indexOf('3') != -1){
+                    data.push(item);
+                }
+            }
+        }
+
+        store.setData(data);
         this.getNewsList().refresh();
     },
 
     getDocumentById: function(){
 
+    },
+
+    deleteDocumentFromList: function(event, target, element, e, eOpts){
+        var innerEl = Ext.get(event.delegatedTarget);
+        var   idList = innerEl.up('.x-dataview-item').getId();
+        var    el = Ext.getCmp(idList);
+//        var    record = el.getRecord();
+//        var    memberId = record.get('_id')
     }
 });

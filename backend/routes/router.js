@@ -30,7 +30,8 @@ module.exports = function (app, passport) {
                 uploadDate: new Date().getTime(),
                 updateDate: new Date().getTime(),
                 tags: body.tags || ['doc'],
-                type: body.type || 'doc'
+                type: body.type || 5,
+                binaryFile: body.binaryFile || ''
             },
             doc = new Document(obj);
         doc.save(function (err, doc) {

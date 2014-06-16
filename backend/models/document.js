@@ -37,7 +37,7 @@ var mongoose = require('mongoose'),
             required:true
         },
         type:{
-            type:String,     //Документ чи оголошення. Якщо оголошення файл не додаються в базу даних
+            type:Number,     //Документ чи оголошення. Якщо оголошення файл не додаються в базу даних
             required:true
         },
         md5:{

@@ -47,6 +47,7 @@ Ext.define('DL.controller.RegistrationForm', {
                 var text = response.responseText;
                 if(text != 'false'){
                     me.getRegistrationForm().fireEvent('loginUserAfterRegister', text);
+                    me.getRegistrationForm().destroy();
                 }
 
             },

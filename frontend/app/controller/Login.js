@@ -24,6 +24,11 @@ Ext.define('DL.controller.Login', {
                 xtype:'registration-form',
                 selector: 'registration-form',
                 autoCreate:true
+            },
+            newsContainer:{
+                xtype:'news-container',
+                selector: 'news-container',
+                autoCreate:true
             }
 
 
@@ -74,7 +79,7 @@ Ext.define('DL.controller.Login', {
             this.getUserDocumentBtn().setHidden(false);
             this.getLogoutBtn().setHidden(false);
             this.getLoginPanel().destroy();
-            this.loadDocuments();
+            this.getNewsContainer().fireEvent('initialize');
         }
 
 
@@ -99,37 +104,7 @@ Ext.define('DL.controller.Login', {
 
             }
         })
-    },
-
-    loadDocuments: function(){
-        var me = this;
-        var userId = this.userData._id;
-        var timePeriod = {
-            from:new Date(new Date(new Date().setMonth(new Date().getMonth()-1)).setHours(0, 0, 0)),
-            to: new Date()
-        };
-        Ext.Ajax.request({
-            method: 'GET',
-            url: '/api/documents',
-            params: {
-                title:null,
-                userId: userId,
-                tags: null,
-                timePeriod: timePeriod
-        },
-            success: function(response){
-                var text = response.responseText;
-                me.documents = JSON.parse(text);
-                me.updateMainPage();
-                      },
-            error:function(){
-
-            }
-        })
-    },
-
-    updateMainPage: function(){
-
     }
+
 
 });

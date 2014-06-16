@@ -120,9 +120,7 @@ Ext.define('DL.view.News', {
                                     case 10:
                                         return 'бухг.'
                                 }
-
-                            }
-                            else{
+                            } else {
                                 return 'студ.'
                             }
                         }
@@ -130,46 +128,62 @@ Ext.define('DL.view.News', {
                     }
 
 
-                )
-            }
-        ],
-        listeners:[
-            {
-                delegate: 'div.download',
-                element: 'element',
-                event: 'tap',
-                fn: function (event, target, element, e, eOpts) {
-                    var innerEl = Ext.get(event.delegatedTarget.parentElement);
-                    this.fireEvent('downloadDocument');
-
-                }
-            },
-            {
-                delegate: 'div.delete-btn',
-                element: 'element',
-                event: 'tap',
-                fn: function (event, target, element, e, eOpts) {
-                    this.fireEvent('deleteDocument', event, target, element, e, eOpts);
-
-                }
-            },
-            {
-                delegate: 'div.news',
-                element: 'element',
-                event: 'tap',
-                fn: function (event, target, element, e, eOpts) {
-                    var innerEl = Ext.get(event.delegatedTarget.parentElement);
-                    var visibility = innerEl.dom.nextElementSibling.getAttribute('style', 'display');
-                    if(visibility == "display:block"){
-                        innerEl.dom.nextElementSibling.setAttribute('style', 'display:none')
-                    } else{
-                        innerEl.dom.nextElementSibling.setAttribute('style', 'display:block')
+                ),
+                listeners: [
+                    {
+                        event: 'itemtap',
+                        fn: function (view, index, target, record, e, eOpts) {
+                            if(e.target.classList.contains('download')){
+                                this.fireEvent('downloadDocument', record);
+                            } else if (e.target.classList.contains('delete-btn')) {
+                                this.fireEvent('deleteDocument', record);
+                            } else if (e.target.classList.contains('news')) {
+                                //TODO add logic for styling
+//                                this.fireEvent('deleteDocument', record);
+                            }
+                        }
                     }
-
-
-                }
+                ]
             }
-            ]
+        ]
+//        listeners:[
+//            {
+//                delegate: 'div.download',
+////                element: 'element',
+//                event: 'tap',
+//                fn: function (event, target, element, e, eOpts) {
+//                    var innerEl = Ext.get(event.delegatedTarget.parentElement);
+//                    this.fireEvent('downloadDocument');
+//
+//                }
+//            },
+//            {
+//                delegate: 'div.delete-btn',
+//                element: 'element',
+//                event: 'tap',
+//                fn: function (event, target, element, e, eOpts) {
+//                    var innerEl = Ext.get(event.delegatedTarget.parentElement);
+//                    this.fireEvent('deleteDocument');
+//
+//                }
+//            },
+//            {
+//                delegate: 'div.news',
+//                element: 'element',
+//                event: 'tap',
+//                fn: function (event, target, element, e, eOpts) {
+//                    var innerEl = Ext.get(event.delegatedTarget.parentElement);
+//                    var visibility = innerEl.dom.nextElementSibling.getAttribute('style', 'display');
+//                    if(visibility == "display:block"){
+//                        innerEl.dom.nextElementSibling.setAttribute('style', 'display:none')
+//                    } else{
+//                        innerEl.dom.nextElementSibling.setAttribute('style', 'display:block')
+//                    }
+//
+//
+//                }
+//            }
+//            ]
     },
     initComponent: function(){
         this.callParent();

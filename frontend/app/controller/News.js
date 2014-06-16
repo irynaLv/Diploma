@@ -26,7 +26,11 @@ Ext.define('DL.controller.News', {
         },
         control: {
             newsContainer: {
-                initialize: 'onInitialize',
+                initialize: 'onInitialize'
+//                downloadDocument: 'getDocumentById',
+//                deleteDocument: 'deleteDocument'
+            },
+            newsList: {
                 downloadDocument: 'getDocumentById',
                 deleteDocument: 'deleteDocumentFromList'
             }
@@ -109,7 +113,24 @@ Ext.define('DL.controller.News', {
         this.getNewsList().refresh();
     },
 
-    getDocumentById: function(){
+    getDocumentById: function(record){
+        var me = this;
+        var url = '/api/document/' + record.get('_id');
+        Ext.Ajax.request({
+            method: 'GET',
+            url: url,
+            success: function (response) {
+                var text = response.responseText;
+                me.getLoginBtn().setHidden(false);
+                me.getNewDocumentBtn().setHidden(true);
+                me.getUserDocumentBtn().setHidden(true);
+                me.getLogoutBtn().setHidden(true);
+                localStorage.removeItem('userData');
+            },
+            error: function () {
+
+            }
+        })
 
     },
 

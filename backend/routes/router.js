@@ -18,7 +18,13 @@ module.exports = function (app, passport) {
         }
 
         if (req.query.types) {
-            query.where('type').in(req.query.types);
+            var types = req.query.types,
+                array = [];
+            for (var i = 0; i < types.length; i++) {
+                array.push(types[i] - 0);
+            }
+
+            query.where('type').in(array);
         }
 
         if (req.query.owner) {
@@ -65,13 +71,13 @@ module.exports = function (app, passport) {
             obj = {
                 title: body.title || 'No title',
                 owner: body.owner || 'No owner',
-                accessLayer: body.accessLayer || 0,
+                accessLayer: body.accessLayer - 0 || 0,
                 description: body.description || 'No description',
                 fileName: body.fileName || 'Test.txt',
                 uploadDate: new Date().getTime(),
                 updateDate: new Date().getTime(),
                 tags: body.tags || ['doc'],
-                type: body.type || 5,
+                type: body.type - 0 || 5,
                 binaryFile: body.binaryFile || ''
             },
             doc = new Document(obj);

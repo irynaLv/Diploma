@@ -44,7 +44,7 @@ Ext.application({
     ],
 
     stores: [
-        'Documents'
+        'DL.store.Documents'
     ],
 
     models: [

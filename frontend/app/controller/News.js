@@ -4,11 +4,13 @@
 /**
  * Created by ikush on 6/14/2014.
  */
+
 Ext.define('DL.controller.News', {
     extend: 'Ext.app.Controller',
 
     requires:[
-        'Ext.Ajax'
+        'Ext.Ajax',
+        'DL.store.Documents'
     ],
 
     config: {
@@ -26,7 +28,6 @@ Ext.define('DL.controller.News', {
             newsContainer: {
                 initialize: 'onInitialize'
             }
-
         }
     },
 
@@ -57,10 +58,9 @@ Ext.define('DL.controller.News', {
     },
 
     updateMainPage: function(){
-        Ext.getStore('documents').setData(this.documents);
+        var store = Ext.getStore('documents');
+        console.log('Store is ', store);
+        store.setData(this.documents);
         this.getNewsList().refresh();
     }
-
-
-
 });

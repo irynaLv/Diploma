@@ -1,0 +1,25 @@
+.news-container{
+  .news-list{
+    .news-item{
+      margin: 1% 10%;
+      .news{
+        max-width: 76%;
+      }
+      .download{
+        background-image: url('../images/download_4-512.png');
+        height: 1.5em;
+        width: 1.5em;
+        background-size: contain;
+        position: absolute;
+        right: 10%;
+      }
+      .description{
+         display: none;
+      }
+      .main-cont{
+        @include st-box();
+        @include st-box-orient(horisontal);
+      }
+    }
+  }
+}

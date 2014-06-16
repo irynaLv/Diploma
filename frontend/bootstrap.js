@@ -46,19 +46,23 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLResultSet": "touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLResultSetRowList": "touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLTransaction": "touch/src/device/sqlite/Sencha.js",
-  "Ext.draw.engine.SvgContext.Gradient": "touch/src/draw/engine/SvgContext.js",
-  "TL": "app"
+  "Ext.draw.engine.SvgContext.Gradient": "touch/src/draw/engine/SvgContext.js"
 });
 Ext.ClassManager.addNameAlternateMappings({
+  "DL.controller.AddDocument": [],
+  "DL.controller.Login": [],
   "DL.controller.Main": [],
+  "DL.controller.News": [],
   "DL.controller.RegistrationForm": [],
+  "DL.controller.Search": [],
+  "DL.model.Documents": [],
   "DL.model.User": [],
+  "DL.store.Documents": [],
   "DL.store.Users": [],
   "DL.view.AddDocument": [],
   "DL.view.Documents": [],
   "DL.view.LoginForm": [],
   "DL.view.Main": [],
-  "DL.view.Menu": [],
   "DL.view.News": [],
   "DL.view.RegistrationForm": [],
   "DL.view.Search": [],
@@ -785,13 +789,18 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
-  ],
-  "TL.controller.Search": []
+  ]
 });
 Ext.ClassManager.addNameAliasMappings({
+  "DL.controller.AddDocument": [],
+  "DL.controller.Login": [],
   "DL.controller.Main": [],
+  "DL.controller.News": [],
   "DL.controller.RegistrationForm": [],
+  "DL.controller.Search": [],
+  "DL.model.Documents": [],
   "DL.model.User": [],
+  "DL.store.Documents": [],
   "DL.store.Users": [],
   "DL.view.AddDocument": [
     "widget.add-document-panel"
@@ -800,14 +809,10 @@ Ext.ClassManager.addNameAliasMappings({
     "widget.documents"
   ],
   "DL.view.LoginForm": [
-    "widget.login-form",
-    "widget.loginForm"
+    "widget.login-form"
   ],
   "DL.view.Main": [
     "widget.main"
-  ],
-  "DL.view.Menu": [
-    "widget.menu"
   ],
   "DL.view.News": [
     "widget.news-container"
@@ -1762,8 +1767,7 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
-  "Ext.viewport.WindowsPhone": [],
-  "TL.controller.Search": []
+  "Ext.viewport.WindowsPhone": []
 });
 
 

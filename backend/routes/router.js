@@ -90,7 +90,8 @@ module.exports = function (app, passport) {
             var doc = new Document(obj);
             doc.save(function (err, doc) {
                 if (!err && doc) {
-                    res.json(doc);
+                    res.status(200);
+                    res.redirect('/');
                 } else {
                     res.status(404);
                     res.send();

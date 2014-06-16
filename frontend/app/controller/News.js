@@ -20,6 +20,11 @@ Ext.define('DL.controller.News', {
                 selector: 'news-container',
                 autoCreate:true
             },
+            searchPanel:{
+                xtype:'search-document-panel',
+                selector: 'search-document-panel',
+                autoCreate:true
+            },
             newsList: 'news-container component[itemId=news-list]',
             logoutBtn:'xtitlebar component[itemId=logout-btn]',
             userDocumentsBtn:'xtitlebar component[itemId=user-document-btn]'
@@ -43,6 +48,9 @@ Ext.define('DL.controller.News', {
             userDocumentsBtn: {
                 showUserDocuments: 'showUserDocuments',
                 showAllDocuments: 'updateMainPage'
+            },
+            searchPanel: {
+                loadDataBySearch:'updateMainPage'
             }
         }
     },
@@ -73,8 +81,14 @@ Ext.define('DL.controller.News', {
         })
     },
 
-    updateMainPage: function(){
+    updateMainPage: function(loadData){
         var data = [];
+        var mainData;
+        if(loadData){
+            mainData = loadData
+        } else{
+            mainData = this.documents;
+        }
         var store = Ext.getStore('documents');
         var item = null;
         var documentOwner = null;
@@ -83,8 +97,8 @@ Ext.define('DL.controller.News', {
             var role = userData.role;
             var userName = userData.firstName + ' '+userData.secondName;
             if(role ==1){
-                for(var i=0; i<this.documents.length; i++){
-                    item = this.documents[i];
+                for(var i=0; i<mainData.length; i++){
+                    item = mainData[i];
                     if(item.accessLayer.indexOf(3) != -1 ||
                         item.accessLayer.indexOf(1) != -1 ||
                         item.accessLayer.indexOf('3') != -1 ||
@@ -98,8 +112,8 @@ Ext.define('DL.controller.News', {
                     }
                 }
             } else if(role == 2){
-                for(var i=0; i<this.documents.length; i++){
-                    item = this.documents[i];
+                for(var i=0; i<mainData.length; i++){
+                    item = mainData[i];
                     documentOwner = item.owner;
                     if(item.accessLayer.indexOf(3) != -1 ||
                         item.accessLayer.indexOf(1) != -1 ||
@@ -117,8 +131,8 @@ Ext.define('DL.controller.News', {
                 }
             }
         } else{
-            for(var i=0; i<this.documents.length; i++){
-                item = this.documents[i];
+            for(var i=0; i<mainData.length; i++){
+                item = mainData[i];
 
                 if(item.accessLayer.indexOf('3') != -1){
                     data.push(item);

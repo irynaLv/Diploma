@@ -69,6 +69,7 @@ Ext.define('DL.controller.Search', {
 
 
     searchDocument: function(){
+        var me = this;
         var dateFrom = this.getDateFrom().getValue().getTime();
         var dateTo = this.getDateTo().getValue().getTime();
 
@@ -90,6 +91,8 @@ Ext.define('DL.controller.Search', {
             },
             success: function(response){
                 var text = response.responseText;
+                var data = JSON.parse(text);
+                me.getSearchPanel().fireEvent('loadDataBySearch', data);
             },
             error:function(){
 
@@ -97,24 +100,6 @@ Ext.define('DL.controller.Search', {
         })
     },
 
-    searchByTags: function(tags, timePeriod){
-        var name = this.getSearchField().getValue();
-
-        Ext.Ajax.request({
-            method: 'GET',
-            url: '/api/documents',
-            params: {
-
-                type: 5
-            },
-            success: function(response){
-                var text = response.responseText;
-            },
-            error:function(){
-
-            }
-        })
-    },
 
 
     closeSearchPanel: function(){

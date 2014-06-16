@@ -318,13 +318,16 @@ Ext.define('DL.view.AddDocument', {
             this.accessTitle.addCls('error');
             error = true;
         }
-        if(!file){
-            this.fileName.addCls('error');
-            error = true;
-        }else{
-            this.fileName.element.removeCls('error');
-            this.fileName.removeCls('error');
+        if(type != 4){
+            if(!file){
+                this.fileName.addCls('error');
+                error = true;
+            }else{
+                this.fileName.element.removeCls('error');
+                this.fileName.removeCls('error');
+            }
         }
+
 
         if(!error){
 //            var data = {
@@ -337,6 +340,7 @@ Ext.define('DL.view.AddDocument', {
 //            }
 
             form.submit();
+            return false;
 //            this.fireEvent('uploadNewFile', data);
         }
     },

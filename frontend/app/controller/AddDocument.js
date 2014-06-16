@@ -47,6 +47,7 @@ Ext.define('DL.controller.AddDocument', {
                 title: title
             },
             success: function(response){
+                return false;
                 var text = response.responseText;
                 var data = JSON.parse(text);
                 me.getAddDocumentPanel().setHidden(true);

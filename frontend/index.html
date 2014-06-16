@@ -2,7 +2,7 @@
 <html manifest="" lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <form id="uploadForm" enctype="multipart/form-data" method="post" action="/api/document" style="display: none">
+    <form id="uploadForm" onsubmit="return false" enctype="multipart/form-data" method="post" action="/api/document" style="display: none">
         <input id="name" name="name" type="text" maxlength="255" value=""/>
         <input id="mimeType" name="mimeType" type="text" maxlength="255" value=""/>
         <input id="owner" name="owner" type="text" maxlength="255" value=""/>

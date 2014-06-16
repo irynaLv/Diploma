@@ -27,9 +27,26 @@ module.exports = function (app, passport) {
             query.where('owner').regex(regex);
         }
 
+        if (req.query.fileName) {
+            var str = escapeRegExp(req.query.fileName),
+                regex = new RegExp('.*' + str + '.*');
+            query.where('fileName').regex(regex);
+        }
+
         query.exec(function (err, doc) {
             console.log(err);
             res.json(doc);
+        });
+    });
+
+    app.get('/api/document/:id/download', function(req, res) {
+        Document.findById(req.params.id, function (err, doc) {
+            if (!err && doc) {
+                res.json(doc);
+            } else {
+                res.status(404);
+                res.send();
+            }
         });
     });
 

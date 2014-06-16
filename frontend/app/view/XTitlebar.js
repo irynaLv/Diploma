@@ -90,15 +90,6 @@ Ext.define('DL.view.XTitlebar', {
                         ]
                     }
 
-//                    {
-//                        xtype: 'button',
-//                        cls: 'user-setting-btn',
-//                        itemId: 'user-setting-btn',
-////                        hidden: true,
-//                        text: 'Налаштування',
-//                        scope:this
-////                        handler:'getLoginPanel'
-//                    }
                 ]
 
             }

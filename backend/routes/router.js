@@ -7,6 +7,8 @@ module.exports = function (app, passport) {
             return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
         }
 
+        console.log(req.query);
+
         var query = Document.find({});
         query.select('-md5 -MIMEType -binaryFile');
         if (req.query.from) {

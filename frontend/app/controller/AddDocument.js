@@ -45,12 +45,12 @@ Ext.define('DL.controller.AddDocument', {
                 type:data.type,
                 accessLayer : data.accessValue,
                 binaryFile: data.file,
-                title: title,
-                creationDate: new Date(),
-                updateDate: new Date()
+                title: title
             },
             success: function(response){
                 var text = response.responseText;
+                var data = JSON.parse(text);
+
             },
             error:function(){
 

@@ -39,15 +39,16 @@ Ext.application({
         'RegistrationForm',
         'Search',
         'AddDocument',
-        'Login'
+        'Login',
+        'News'
     ],
 
     stores: [
-
+        'Documents'
     ],
 
     models: [
-
+        'Documents'
     ],
 
     icon: {

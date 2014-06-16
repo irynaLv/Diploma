@@ -61,12 +61,14 @@ Ext.define('DL.controller.Login', {
                 return;
             }
         }
+        this.userData = JSON.parse(data);
         localStorage.setItem('userData', data);
         this.getLoginBtn().setHidden(true);
         this.getNewDocumentBtn().setHidden(false);
         this.getUserDocumentBtn().setHidden(false);
         this.getLogoutBtn().setHidden(false);
         this.getLoginPanel().destroy();
+        this.loadDocuments();
     },
 
     logoutUser:function(){
@@ -88,6 +90,36 @@ Ext.define('DL.controller.Login', {
 
             }
         })
+    },
+
+    loadDocuments: function(){
+        var userId = this.userData._id;
+        var timePeriod = {
+            from:new Date(new Date(new Date().setMonth(new Date().getMonth()-1)).setHours(0, 0, 0)),
+            to: new Date()
+        };
+        Ext.Ajax.request({
+            method: 'GET',
+            url: '/api/documents',
+            params: {
+                title:null,
+                userId: userId,
+                tags: null,
+                timePeriod: timePeriod
+        },
+            success: function(response){
+                var text = response.responseText;
+                this.documents = JSON.parse(text);
+                this.updateMainPage();
+                      },
+            error:function(){
+
+            }
+        })
+    },
+
+    updateMainPage: function(){
+
     }
 
 });

@@ -75,7 +75,7 @@ module.exports = function (app, passport) {
             var obj = {
                 title: fields.name[0] || 'No title',
                 owner: fields.owner[0] || 'No owner',
-                accessLayer: [fields.access[0]] || [0],
+                accessLayer: fields.access[0].split(',') || [0],
                 description: fields.description[0] || 'No description',
                 fileName: files.file[0].originalFilename || 'Test.txt',
                 uploadDate: new Date().getTime(),
@@ -93,8 +93,7 @@ module.exports = function (app, passport) {
                     res.status(200);
                     res.redirect('/');
                 } else {
-                    res.status(404);
-                    res.send();
+                    res.send(404);
                 }
             });
         });

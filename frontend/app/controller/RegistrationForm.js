@@ -39,12 +39,15 @@ Ext.define('DL.controller.RegistrationForm', {
                 secondName: data.surname,
                 email: data.email,
                 role: data.role,
-                status: data.status,
+                title: data.status,
                 sex: data.sex,
                 birthDay: data.birthday
             },
             success: function(response){
                 var text = response.responseText;
+                if(text != 'false'){
+                    me.getRegistrationForm().fireEvent('loginUserAfterRegister', text);
+                }
 
             },
             error:function(){

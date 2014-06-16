@@ -13,7 +13,7 @@ var mongoose = require('mongoose'),
             required:true
         },
         accessLayer:{
-            type: Number,
+            type: Array,
             required:true
         },
         description:{
@@ -25,11 +25,11 @@ var mongoose = require('mongoose'),
             required:true
         },
         uploadDate:{
-            type: Date,
+            type: Number,
             required:true
         },
         updateDate:{
-            type: Date,
+            type: Number,
             required:true
         },
         tags:{

@@ -38,11 +38,11 @@ var UserSchema = new mongoose.Schema({
         required: true
     },
     title:{
-        type: String,
+        type: Number,
         required:true
     },
     sex:{
-        type: String,
+        type: Number,
         required:true
     }
 });

@@ -9,13 +9,13 @@ Ext.define('DL.model.Documents', {
         fields: [
 
             {name: '_id',  type: 'string'},
-            {name: 'accessLayer',   type: 'int'},
+            {name: 'accessLayer',   type: 'array'},
             {name: 'description', type: 'string'},
             {name: 'fileName', type: 'string'},
             {name: 'owner', type: 'string'},
-            {name: 'title', type: 'string'},
-            {name: 'type', type: 'string'},
-            {name: 'uploadDate', type: 'date'}
+            {name: 'title', type: 'int'},
+            {name: 'type', type: 'int'},
+            {name: 'uploadDate', type: 'int'}
         ]
     }
 });

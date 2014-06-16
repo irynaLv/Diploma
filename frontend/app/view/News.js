@@ -35,15 +35,79 @@ Ext.define('DL.view.News', {
                 itemTpl: new Ext.XTemplate(
                         '<div class="news-item">' +
                         '<div class="main-cont">' +
-                        '<div class="news">{owner} завантажив файл {fileName}</div>',
-                    '<div class="download"></div>',
-                    '</div>',
+                            '<div class="date">{[this.getDate(values)]}</div>',
+                            '<div class="news">{[this.getUserTitle(values)]}{owner} завантажив файл {fileName}</div>',
+                            '<div class="btn-container"> ' ,
+                            '<div class="delete-btn {[this.checkIfUserOwner(values)]}"></div>',
+                                '<div class="download"></div>',
+
+                            '</div>',
+                        '</div>',
                     '<div class="description"> {description}</div>',
                     '</div>',
                     {
+                        checkIfUserOwner: function(data){
+                             var documentOwner = data.owner;
+                            var deleteClass = 'not-owner';
+                            if(localStorage.getItem('userData')){
+                                var userData = JSON.parse(localStorage.getItem('userData'));
+                                var userName = userData.firstName + ' '+userData.secondName;
+                                if(documentOwner == userName){
+                                    deleteClass = 'owner'
+                                }
+                            }
+                            return deleteClass;
+                        },
                         getDate: function(data){
+                            var fullDate = data.uploadDate;
+                            var date = null;
+                            var month = null;
+                            var year = null;
+                            if(fullDate){
+                                date = new Date(fullDate).getDate();
+                                month = new Date(fullDate).getMonth();
+                                year = new Date(fullDate).getFullYear();
 
+                            }else{
+                                date = new Date().getDate();
+                                month = new Date().getMonth();
+                                year = new Date().getFullYear();
+                            }
+                            return date + '.' + month +"."+ year
+
+                        },
+                        getUserTitle: function(data){
+                            var title = data.title;
+                            if(title){
+                                switch (title){
+                                    case 1:
+                                        return 'проф.'
+                                    case 2:
+                                        return 'доц.'
+                                    case 3:
+                                        return 'ас.'
+                                    case 4:
+                                        return 'ст.викл.'
+                                    case 5:
+                                        return 'мнс.'
+                                    case 6:
+                                        return 'ст.наук.співр.'
+                                    case 7:
+                                        return 'інжн.'
+                                    case 8:
+                                        return 'лаб.'
+                                    case 9:
+                                        return 'зав.лаб.'
+                                    case 10:
+                                        return 'бухг.'
+                                }
+
+                            }
+                            else{
+                                return 'студ.'
+                            }
                         }
+
                     }
 
 
@@ -58,6 +122,16 @@ Ext.define('DL.view.News', {
                 fn: function (event, target, element, e, eOpts) {
                     var innerEl = Ext.get(event.delegatedTarget.parentElement);
                     this.fireEvent('downloadDocument');
+
+                }
+            },
+            {
+                delegate: 'div.delete-btn',
+                element: 'element',
+                event: 'tap',
+                fn: function (event, target, element, e, eOpts) {
+                    var innerEl = Ext.get(event.delegatedTarget.parentElement);
+                    this.fireEvent('deleteDocument');
 
                 }
             },

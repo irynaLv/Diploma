@@ -27,8 +27,8 @@ module.exports = function (app, passport) {
                 accessLayer: body.accessLayer || 0,
                 description: body.description || 'No description',
                 fileName: body.fileName || 'Test.txt',
-                uploadDate: new Date(),
-                updateDate: new Date(),
+                uploadDate: new Date().getTime(),
+                updateDate: new Date().getTime(),
                 tags: body.tags || ['doc'],
                 type: body.type || 'doc'
             },

@@ -19,7 +19,12 @@ Ext.define('DL.controller.Login', {
             loginBtn:'xtitlebar component[itemId=login-btn]',
             logoutBtn:'xtitlebar component[itemId=logout-btn]',
             newDocumentBtn:'xtitlebar component[itemId= add-document-btn]',
-            userDocumentBtn:'xtitlebar component[itemId=user-document-btn]'
+            userDocumentBtn:'xtitlebar component[itemId=user-document-btn]',
+            registrationForm:{
+                xtype:'registration-form',
+                selector: 'registration-form',
+                autoCreate:true
+            }
 
 
 
@@ -30,6 +35,9 @@ Ext.define('DL.controller.Login', {
             },
             logoutBtn:{
                 tap:'logoutUser'
+            },
+            registrationForm: {
+                loginUserAfterRegister:'loginUser'
             }
 
         }
@@ -55,20 +63,21 @@ Ext.define('DL.controller.Login', {
     },
 
     loginUser: function(data){
-        var arr = data.split('"');
-        for(var i = 0; i<arr.length; i++){
-            if(arr[i] == 'No user found.'){
-                return;
-            }
+        var userData = JSON.parse(data);
+        if(userData.msg == "Oops! Wrong password." || userData == false){
+            return;
+        }  else{
+            this.userData = userData;
+            localStorage.setItem('userData', data);
+            this.getLoginBtn().setHidden(true);
+            this.getNewDocumentBtn().setHidden(false);
+            this.getUserDocumentBtn().setHidden(false);
+            this.getLogoutBtn().setHidden(false);
+            this.getLoginPanel().destroy();
+            this.loadDocuments();
         }
-        this.userData = JSON.parse(data);
-        localStorage.setItem('userData', data);
-        this.getLoginBtn().setHidden(true);
-        this.getNewDocumentBtn().setHidden(false);
-        this.getUserDocumentBtn().setHidden(false);
-        this.getLogoutBtn().setHidden(false);
-        this.getLoginPanel().destroy();
-        this.loadDocuments();
+
+
     },
 
     logoutUser:function(){
@@ -93,6 +102,7 @@ Ext.define('DL.controller.Login', {
     },
 
     loadDocuments: function(){
+        var me = this;
         var userId = this.userData._id;
         var timePeriod = {
             from:new Date(new Date(new Date().setMonth(new Date().getMonth()-1)).setHours(0, 0, 0)),
@@ -109,8 +119,8 @@ Ext.define('DL.controller.Login', {
         },
             success: function(response){
                 var text = response.responseText;
-                this.documents = JSON.parse(text);
-                this.updateMainPage();
+                me.documents = JSON.parse(text);
+                me.updateMainPage();
                       },
             error:function(){
 

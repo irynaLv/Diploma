@@ -26,7 +26,9 @@ Ext.define('DL.controller.News', {
         },
         control: {
             newsContainer: {
-                initialize: 'onInitialize'
+                initialize: 'onInitialize',
+                downloadDocument: 'getDocumentById',
+                deleteDocument: 'deleteDocument'
             }
         }
     },
@@ -59,8 +61,12 @@ Ext.define('DL.controller.News', {
 
     updateMainPage: function(){
         var store = Ext.getStore('documents');
-        console.log('Store is ', store);
+//        console.log('Store is ', store);
         store.setData(this.documents);
         this.getNewsList().refresh();
+    },
+
+    getDocumentById: function(){
+
     }
 });

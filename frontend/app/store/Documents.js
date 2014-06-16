@@ -7,6 +7,10 @@ Ext.define('DL.store.Documents', {
         model: 'DL.model.Documents',
         autoLoad: false,
         storeId: 'documents',
-        autoSync: true
+        autoSync: true,
+        sorters: {
+            property : 'uploadDate',
+            direction: 'DESC'
+        }
     }
 });

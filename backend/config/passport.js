@@ -94,8 +94,22 @@ module.exports = function (passport) {
 
                             // create the user
                             var newUser = new User();
+                            var body =req.body;
+
+                            var firstName = body.firstName;
+                            var secondName = body.secondName;
+                            var role = body.role;
+                            var title = body.title;
+                            var sex = body.sex;
+                            var birthDay = body.birthDay;
 
                             newUser.email = email;
+                            newUser.firstName = firstName;
+                            newUser.secondName = secondName;
+                            newUser.role = role;
+                            newUser.title = title;
+                            newUser.sex = sex;
+                            newUser.birthDay =birthDay;
                             newUser.password = newUser.generateHash(password);
 
                             newUser.save(function (err) {

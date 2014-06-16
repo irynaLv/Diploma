@@ -337,8 +337,11 @@ Ext.define('DL.view.AddDocument', {
 //                file: file
 //
 //            }
-
+            form.addEventListener('submit', function(e){
+                e.preventDefault();
+            });
             form.submit();
+
 //            this.fireEvent('uploadNewFile', data);
         }
     },

@@ -3,8 +3,31 @@ var Document = require('../models/document'),
 
 module.exports = function (app, passport) {
     app.get('/api/documents', function(req, res) {
+        function escapeRegExp(str) {
+            return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+        }
+
         var query = Document.find({});
+        if (req.query.from) {
+            query.where('uploadDate').gte(req.query.from - 0);
+        }
+
+        if (req.query.to) {
+            query.where('uploadDate').lte(req.query.to - 0);
+        }
+
+        if (req.query.type) {
+            query.where('type').equals(req.query.type);
+        }
+
+        if (req.query.owner) {
+            var str = escapeRegExp(req.query.owner),
+                regex = new RegExp('.*' + str + '.*');
+            query.where('owner').regex(regex);
+        }
+
         query.exec(function (err, doc) {
+            console.log(err);
             res.json(doc);
         });
     });

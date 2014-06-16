@@ -1,5 +1,7 @@
 var Document = require('../models/document'),
-    User = require('../models/user');
+    User = require('../models/user'),
+    multiparty = require('multiparty'),
+    fs = require('fs');
 
 module.exports = function (app, passport) {
     app.get('/api/documents', function(req, res) {
@@ -18,13 +20,7 @@ module.exports = function (app, passport) {
         }
 
         if (req.query.types) {
-            var types = req.query.types,
-                array = [];
-            for (var i = 0; i < types.length; i++) {
-                array.push(types[i] - 0);
-            }
-
-            query.where('type').in(array);
+            query.where('type').in(req.query.types);
         }
 
         if (req.query.owner) {
@@ -83,6 +79,7 @@ module.exports = function (app, passport) {
                 updateDate: new Date().getTime(),
                 tags: fields.tags || ['doc'],
                 type: fields.type[0] - 0 || 5,
+                MIMEType: fields.mimeType[0] || 'plain/text',
                 binaryFile: fs.readFileSync(files.file[0].path)
             };
 
@@ -96,6 +93,7 @@ module.exports = function (app, passport) {
                 }
             });
         });
+
     });
     app.post('/api/document/:id', function(req, res) {
         Document.findByIdAndUpdate(req.params.id, req.body, function (err, doc) {

@@ -92,6 +92,9 @@ Ext.define('DL.view.News', {
                                 month = new Date().getMonth();
                                 year = new Date().getFullYear();
                             }
+                            if(Ext.os.deviceType == 'Phone'){
+                                return  date + '.' + month;
+                            }
                             return date + '.' + month +"."+ year
 
                         },
@@ -185,7 +188,7 @@ Ext.define('DL.view.News', {
 //            }
 //            ]
     },
-    initComponent: function(){
+    initialize: function(){
         this.callParent();
     }
 })

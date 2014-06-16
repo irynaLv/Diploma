@@ -12,13 +12,22 @@ Ext.define('DL.controller.Search', {
                 autoCreate:true
             },
             closeSearchPanelBtn:'component[itemId=close-search-panel-btn]',
+            searchBtn:'component[itemId=search-btn]',
 
             titlebar: {
                 xtype: 'xtitlebar',
                 selector: 'xtitlebar',
                 autoCreate:true
             },
-            searchField: 'xtitlebar component[itemId= documentSearch]'
+            searchField: 'xtitlebar component[itemId= documentSearch]',
+            dateFrom: 'search-document-panel component[itemId=date-create-from]',
+            dateTo: 'search-document-panel component[itemId=date-create-to]',
+            owner: 'search-document-panel component[itemId=owner]',
+            trainingMaterials: 'search-document-panel component[itemId=trainingMaterials]',
+            regulations: 'search-document-panel component[itemId=regulations]',
+            minutesOfMeetings: 'search-document-panel component[itemId=minutesOfMeetings]',
+            informationMaterials: 'search-document-panel component[itemId=informationMaterials]',
+            advertisement: 'search-document-panel component[itemId=advertisement]'
         },
         control: {
             searchPanel: {
@@ -29,28 +38,55 @@ Ext.define('DL.controller.Search', {
             },
             searchField: {
                 focus: 'openAdvancedSearch',
-                action: 'searchByName'
+                action: 'searchDocument'
+            },
+            searchBtn:{
+                tap:   'searchDocument'
             }
 
         }
     },
 
-    searchByName: function(){
-        this.dateFrom = new Date();
-        this.dateTo = new Date(new Date(new Date().setMonth(new Date().getMonth()-1)).setHours(0, 0, 0));
+    getType: function(){
+        var checkedValue = [];
+        if(this.getTrainingMaterials().getChecked()){
+            checkedValue.push(this.getTrainingMaterials().getValue())
+        }
+        if(this.getRegulations().getChecked()){
+            checkedValue.push(this.getRegulations().getValue())
+        }
+        if(this.getMinutesOfMeetings().getChecked()){
+            checkedValue.push(this.getMinutesOfMeetings().getValue())
+        }
+        if(this.getInformationMaterials().getChecked()){
+            checkedValue.push(this.getInformationMaterials().getValue())
+        }
+        if(this.getAdvertisement().getChecked()){
+            checkedValue.push(this.getAdvertisement().getValue())
+        }
+        return checkedValue;
+    },
+
+
+    searchDocument: function(){
+        var dateFrom = this.getDateFrom().getValue().getTime();
+        var dateTo = this.getDateTo().getValue().getTime();
+
         var timePeriod={
-            from: this.dateTo,
-            to:this.dateFrom
+            from: dateFrom,
+            to:dateTo
         };
+        var owner = this.getOwner().getValue();
         var name = this.getSearchField().getValue();
-        var dateFrom =
+        var types = this.getType();
         Ext.Ajax.request({
             method: 'GET',
-            url: '/getDocuments',
+            url: '/api/documents',
             params: {
-                name: name,
-                tags : null,
-                timePeriod:timePeriod
+                types:types,
+                uploadDate:timePeriod,
+                owner: owner,
+                fileName: name
             },
             success: function(response){
                 var text = response.responseText;
@@ -63,13 +99,13 @@ Ext.define('DL.controller.Search', {
 
     searchByTags: function(tags, timePeriod){
         var name = this.getSearchField().getValue();
+
         Ext.Ajax.request({
             method: 'GET',
-            url: '/getDocuments',
+            url: '/api/documents',
             params: {
-                name: name,
-                tags : tags,
-                timePeriod:timePeriod
+
+                type: 5
             },
             success: function(response){
                 var text = response.responseText;

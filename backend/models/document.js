@@ -47,7 +47,7 @@ var mongoose = require('mongoose'),
             type:String
         },
         binaryFile:{
-            type:String
+            type: Buffer
         }
     });
 

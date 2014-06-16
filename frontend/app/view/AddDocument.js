@@ -135,13 +135,21 @@ Ext.define('DL.view.AddDocument', {
                                 width: '39%'
                             },
                             {
-                                xtype: 'filefield',
-                                label: "Файл:",
-                                cls: 'file',
+                                xtype: 'button',
+                                text: 'Виберіть файл',
+                                cls: 'take-file-btn',
                                 itemId: 'file',
-                                buttonText: 'Виберіть файл',
-//                        buttonWidth: '3em',
-                                hidden: true
+                                handler: 'onAttachFile',
+                                scope: this,
+                                width: '39%'
+
+//                                xtype: 'filefield',
+//                                label: "Файл:",
+//                                cls: 'file',
+//                                itemId: 'file',
+//                                buttonText: 'Виберіть файл',
+////                        buttonWidth: '3em',
+//                                hidden: true
 
                             }
 
@@ -222,7 +230,7 @@ Ext.define('DL.view.AddDocument', {
     },
 
     onAttachFile:function(){
-        var input = this.file.element.down('input').dom;
+        var input = document.querySelector('#file');
         var me = this;
         input.addEventListener("change", function(event){
             var el = this,
@@ -238,16 +246,7 @@ Ext.define('DL.view.AddDocument', {
         var fileList = el.files; /* now you can work with the file list */
         if (fileList.length > 0){
             var file = fileList[0];
-
-
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                var screenShot = e.target.result;
-                me.screenshot = screenShot;
-                me.fileName.setHtml(me.file.element.down('input').dom.value)
-            };
-            reader.readAsDataURL(file);
-
+            me.fileName.setHtml(el.value)
         }
 
     },
@@ -273,6 +272,14 @@ Ext.define('DL.view.AddDocument', {
 
     },
     onUploadBtn: function(){
+        var form = document.querySelector('#uploadForm');
+        var nameField = document.querySelector('#name');
+        var ownerField = document.querySelector('#owner');
+        var descriptionField = document.querySelector('#description');
+        var fileField = document.querySelector('#file');
+        var typeField = document.querySelector('#type');
+        var accessField = document.querySelector('#access');
+        var submitBtn = document.querySelector('#saveForm');
         var name = this.name.getValue();
         var description  =  this.description.getValue();
         var type =  this.type.getValue();
@@ -280,16 +287,19 @@ Ext.define('DL.view.AddDocument', {
         var studentAccess = this.studentAccess.getChecked();
         var owner = this.owner.getChecked();
         var allUserAccess =this.allUserAccess.getChecked();
-        var file = this.screenshot;
+        var file = fileField.files.length > 0;
         var error = false;
         var accessValue = [];
+        typeField.value = this.type.getValue();
+        var userData = JSON.parse(localStorage.getItem('userData'));
+        ownerField.value = userData.firstName + ' ' + userData.secondName
         if(!name){
             this.name.addCls('error');
             error = true;
         }else{
             this.name.element.removeCls('error');
             this.name.removeCls('error');
-
+            nameField.value = name;
         };
         if(!description){
             this.description.addCls('error');
@@ -297,36 +307,37 @@ Ext.define('DL.view.AddDocument', {
         }else{
             this.description.element.removeCls('error');
             this.description.removeCls('error');
+            descriptionField.value = description;
         }
         if(workerAccess || studentAccess || owner || allUserAccess){
             this.accessTitle.element.removeCls('error');
             this.accessTitle.removeCls('error');
             accessValue = this.getAccessValue();
-
+            accessField.value = accessValue.toString();
         }else{
             this.accessTitle.addCls('error');
             error = true;
         }
-        if(!this.fileContainer.getHidden()){
-            if(!file){
-                this.fileName.addCls('error');
-                error = true;
-            }else{
-                this.fileName.element.removeCls('error');
-                this.fileName.removeCls('error');
-            }
+        if(!file){
+            this.fileName.addCls('error');
+            error = true;
+        }else{
+            this.fileName.element.removeCls('error');
+            this.fileName.removeCls('error');
         }
 
         if(!error){
-            var data = {
-                name: name,
-                description : description,
-                type:type,
-                access : accessValue,
-                file: file
+//            var data = {
+//                name: name,
+//                description : description,
+//                type:type,
+//                access : accessValue,
+//                file: file
+//
+//            }
 
-            }
-            this.fireEvent('uploadNewFile', data);
+            form.submit();
+//            this.fireEvent('uploadNewFile', data);
         }
     },
 

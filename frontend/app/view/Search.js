@@ -148,8 +148,7 @@ Ext.define('DL.view.Search', {
                         cls:'search-btn',
                         itemId:'search-btn',
                         text: 'Пошук',
-                        width: '35%',
-                        handler: 'advancedSearch'
+                        width: '35%'
                     },
                     {
                         xtype: 'spacer',
@@ -172,46 +171,46 @@ Ext.define('DL.view.Search', {
         this.dateTo = new Date(new Date(new Date().setMonth(new Date().getMonth()-1)).setHours(0, 0, 0));
 
         this.down('#search-btn').setScope(this);
-        this.down('#search-btn').setHandler(this.advancedSearch);
+//        this.down('#search-btn').setHandler(this.advancedSearch);
         this.callParent();
-    },
-
-    advancedSearch: function(){
-        var dateFrom = this.down("#date-create-from").getValue();
-        var dateTo =  this.down("#date-create-to").getValue();
-        var owner =  this.down('#owner').getValue();
-        var type = this.getType();
-        var tags = {
-            owner: owner,
-            type: type
-        };
-        var timePeriod = {
-            from:dateFrom,
-            to:dateTo
-        }
-
-        this.fireEvent('sendAdvancedSearch', tags, timePeriod )
-    },
-
-    getType: function(){
-        var checkedValue = [];
-        if(this.down('#trainingMaterials').getChecked()){
-            checkedValue.push(this.down('#trainingMaterials').getValue())
-        }
-        if(this.down('#regulations').getChecked()){
-            checkedValue.push(this.down('#regulations').getValue())
-        }
-        if(this.down('#minutesOfMeetings').getChecked()){
-            checkedValue.push(this.down('#minutesOfMeetings').getValue())
-        }
-        if(this.down('#informationMaterials').getChecked()){
-            checkedValue.push(this.down('#informationMaterials').getValue())
-        }
-        if(this.down('#advertisement').getChecked()){
-            checkedValue.push(this.down('#advertisement').getValue())
-        }
-        return checkedValue;
     }
+//
+//    advancedSearch: function(){
+//        var dateFrom = this.down("#date-create-from").getValue();
+//        var dateTo =  this.down("#date-create-to").getValue();
+//        var owner =  this.down('#owner').getValue();
+//        var type = this.getType();
+//        var tags = {
+//            owner: owner,
+//            type: type
+//        };
+//        var timePeriod = {
+//            from:dateFrom,
+//            to:dateTo
+//        }
+//
+//        this.fireEvent('sendAdvancedSearch', tags, timePeriod )
+//    },
+//
+//    getType: function(){
+//        var checkedValue = [];
+//        if(this.down('#trainingMaterials').getChecked()){
+//            checkedValue.push(this.down('#trainingMaterials').getValue())
+//        }
+//        if(this.down('#regulations').getChecked()){
+//            checkedValue.push(this.down('#regulations').getValue())
+//        }
+//        if(this.down('#minutesOfMeetings').getChecked()){
+//            checkedValue.push(this.down('#minutesOfMeetings').getValue())
+//        }
+//        if(this.down('#informationMaterials').getChecked()){
+//            checkedValue.push(this.down('#informationMaterials').getValue())
+//        }
+//        if(this.down('#advertisement').getChecked()){
+//            checkedValue.push(this.down('#advertisement').getValue())
+//        }
+//        return checkedValue;
+//    }
 
 
 

@@ -44,7 +44,10 @@ module.exports = function (app, passport) {
     app.get('/api/document/:id/download', function(req, res) {
         Document.findById(req.params.id, function (err, doc) {
             if (!err && doc) {
-                res.json(doc);
+                res.set('Content-Disposition', 'attachment; filename="' + doc.fileName + '"');
+                res.set('Content-Type', doc.MIMEType);
+//                res.sendfile(fs.write(doc.binaryFile));
+                res.send(doc.binaryFile);
             } else {
                 res.status(404);
                 res.send();
@@ -78,8 +81,9 @@ module.exports = function (app, passport) {
                 uploadDate: new Date().getTime(),
                 updateDate: new Date().getTime(),
                 tags: fields.tags || ['doc'],
-                type: fields.type[0] - 0 || 5,
+                type: fields.type[0] || 5,
                 MIMEType: fields.mimeType[0] || 'plain/text',
+                type: fields.type[0] - 0 || 5,
                 binaryFile: fs.readFileSync(files.file[0].path)
             };
 

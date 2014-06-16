@@ -119,6 +119,8 @@ Ext.define('DL.view.XTitlebar', {
         this.down('#add-document-btn').setHidden(this.getHiddenEl());
         this.down('#logout-btn').setHidden(this.getHiddenEl());
         this.down('#user-document-btn').setHidden(this.getHiddenEl());
+        this.down('#user-document-btn').setScope(this);
+        this.down('#user-document-btn').setHandler(this.getUserDocuments);
         this.down('#add-document-btn').setHandler(this.addDocumentPanel);
 
     },
@@ -142,5 +144,15 @@ Ext.define('DL.view.XTitlebar', {
         }else{
             return true
         }
+    },
+    getUserDocuments: function(){
+        if(this.down('#user-document-btn').element.hasCls('pressed')){
+            this.down('#user-document-btn').removeCls('pressed');
+            this.down('#user-document-btn').fireEvent('showAllDocuments')
+        } else{
+            this.down('#user-document-btn').addCls('pressed');
+            this.down('#user-document-btn').fireEvent('showUserDocuments');
+        }
+
     }
 })

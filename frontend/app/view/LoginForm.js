@@ -24,14 +24,14 @@ Ext.define('DL.view.LoginForm', {
                     {
                         xtype: 'textfield',
                         label: 'Email',
-                        itemId: 'email',
-                        value:'jcooper@lajo.mil'
+                        itemId: 'email'
+//                        value:'jcooper@lajo.mil'
                     },
                     {
                         xtype: 'passwordfield',
                         label: 'Пароль',
-                        itemId: 'password',
-                        value: 'JXSVo8EeD'
+                        itemId: 'password'
+//                        value: 'JXSVo8EeD'
                     }
 
                 ]

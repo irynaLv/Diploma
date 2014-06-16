@@ -5,9 +5,50 @@ var Document = require('../models/document'),
 
 module.exports = function (app, passport) {
     app.get('/api/documents', function(req, res) {
+        function escapeRegExp(str) {
+            return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+        }
+
         var query = Document.find({});
+        query.select('-md5 -MIMEType -binaryFile');
+        if (req.query.from) {
+            query.where('uploadDate').gte(req.query.from - 0);
+        }
+
+        if (req.query.to) {
+            query.where('uploadDate').lte(req.query.to - 0);
+        }
+
+        if (req.query.types) {
+            query.where('type').in(req.query.types);
+        }
+
+        if (req.query.owner) {
+            var str = escapeRegExp(req.query.owner),
+                regex = new RegExp('.*' + str + '.*');
+            query.where('owner').regex(regex);
+        }
+
+        if (req.query.fileName) {
+            var str = escapeRegExp(req.query.fileName),
+                regex = new RegExp('.*' + str + '.*');
+            query.where('fileName').regex(regex);
+        }
+
         query.exec(function (err, doc) {
+            console.log(err);
             res.json(doc);
+        });
+    });
+
+    app.get('/api/document/:id/download', function(req, res) {
+        Document.findById(req.params.id, function (err, doc) {
+            if (!err && doc) {
+                res.json(doc);
+            } else {
+                res.status(404);
+                res.send();
+            }
         });
     });
 

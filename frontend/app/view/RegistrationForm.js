@@ -219,7 +219,7 @@ Ext.define('DL.view.RegistrationForm', {
 
     },
 
-    submitRegistrationForm:function(name, surname, email, password, birthday, status, role, sex){
+    submitRegistrationForm:function(name, surname, email, password, birthday, role, sex, status){
         var data = {
             name: name,
             surname: surname,
@@ -255,12 +255,6 @@ Ext.define('DL.view.RegistrationForm', {
             status = 0
         }
         if(email != "" && this.validateEmail(email)){
-
-//            if(email != checkEmail){
-//                this.errorMsg.setHidden(false);
-//                this.errorMsg.setHtml('Введіть коректний email адрес.');
-//                return
-//            }
 
         } else{
             this.errorMsg.setHidden(false);

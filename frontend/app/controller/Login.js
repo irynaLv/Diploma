@@ -94,11 +94,13 @@ Ext.define('DL.controller.Login', {
             },
             success: function(response){
                 var text = response.responseText;
+                localStorage.removeItem('userData');
                 me.getLoginBtn().setHidden(false);
                 me.getNewDocumentBtn().setHidden(true);
                 me.getUserDocumentBtn().setHidden(true);
                 me.getLogoutBtn().setHidden(true);
-                localStorage.removeItem('userData');
+                me.getLogoutBtn().fireEvent('tapOnLogout');
+
             },
             error:function(){
 

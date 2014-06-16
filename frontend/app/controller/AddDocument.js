@@ -27,6 +27,7 @@ Ext.define('DL.controller.AddDocument', {
     },
 
     uploadNewDocument: function(data){
+        var me = this;
         var userData = localStorage.getItem('userData');
         if(userData){
             userData = JSON.parse(userData);
@@ -48,6 +49,9 @@ Ext.define('DL.controller.AddDocument', {
             success: function(response){
                 var text = response.responseText;
                 var data = JSON.parse(text);
+                me.getAddDocumentPanel().setHidden(true);
+                Ext.getStore('documents').addData(data);
+
 
             },
             error:function(){

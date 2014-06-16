@@ -52,7 +52,7 @@ Ext.define('DL.view.News', {
                             if(type == 4){
                                 return ' додав оголошення: '
                             } else{
-                               return 'завантажив файл '
+                               return 'завантажив файл'
                             }
                         },
 
@@ -128,6 +128,42 @@ Ext.define('DL.view.News', {
                     }
 
 
+<<<<<<< HEAD
+                )
+            }
+        ],
+        listeners:[
+            {
+                delegate: 'div.download',
+                element: 'element',
+                event: 'tap',
+                fn: function (event, target, element, e, eOpts) {
+                    var innerEl = Ext.get(event.delegatedTarget.parentElement);
+                    this.fireEvent('downloadDocument');
+
+                }
+            },
+            {
+                delegate: 'div.delete-btn',
+                element: 'element',
+                event: 'tap',
+                fn: function (event, target, element, e, eOpts) {
+                    this.fireEvent('deleteDocument', event, target, element, e, eOpts);
+
+                }
+            },
+            {
+                delegate: 'div.news',
+                element: 'element',
+                event: 'tap',
+                fn: function (event, target, element, e, eOpts) {
+                    var innerEl = Ext.get(event.delegatedTarget.parentElement);
+                    var visibility = innerEl.dom.nextElementSibling.getAttribute('style', 'display');
+                    if(visibility == "display:block"){
+                        innerEl.dom.nextElementSibling.setAttribute('style', 'display:none')
+                    } else{
+                        innerEl.dom.nextElementSibling.setAttribute('style', 'display:block')
+=======
                 ),
                 listeners: [
                     {
@@ -142,6 +178,7 @@ Ext.define('DL.view.News', {
 //                                this.fireEvent('deleteDocument', record);
                             }
                         }
+>>>>>>> b5c1e4e539419be6fba2147d39664ecb4e4b57ab
                     }
                 ]
             }
@@ -185,7 +222,7 @@ Ext.define('DL.view.News', {
 //            }
 //            ]
     },
-    initialize: function(){
+    initComponent: function(){
         this.callParent();
     }
 })

@@ -3,8 +3,10 @@
  */
 Ext.define('DL.store.Documents', {
     extend: 'Ext.data.Store',
-    model: 'DL.model.Documents',
-    autoLoad: false,
-    storeId: 'documents',
-    autoSync: true
+    config: {
+        model: 'DL.model.Documents',
+        autoLoad: false,
+        storeId: 'documents',
+        autoSync: true
+    }
 });

@@ -1,4 +1,5 @@
 #!/bin/sh
 rm -rf backend/public/*
+cd frontend
 sencha app build production
-cp -R frontend/build/production/DL/ backend/public/
+cp -R ./build/production/DL/ ../backend/public/

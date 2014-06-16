@@ -278,6 +278,7 @@ Ext.define('DL.view.AddDocument', {
         var descriptionField = document.querySelector('#description');
         var fileField = document.querySelector('#file');
         var typeField = document.querySelector('#type');
+        var mimeField = document.querySelector('#mimeType');
         var accessField = document.querySelector('#access');
         var submitBtn = document.querySelector('#saveForm');
         var name = this.name.getValue();
@@ -292,7 +293,8 @@ Ext.define('DL.view.AddDocument', {
         var accessValue = [];
         typeField.value = this.type.getValue();
         var userData = JSON.parse(localStorage.getItem('userData'));
-        ownerField.value = userData.firstName + ' ' + userData.secondName
+        ownerField.value = userData.firstName + ' ' + userData.secondName;
+        mimeField.value = fileField.files[0].type;
         if(!name){
             this.name.addCls('error');
             error = true;

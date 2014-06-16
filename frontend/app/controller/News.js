@@ -131,23 +131,14 @@ Ext.define('DL.controller.News', {
     },
 
     getDocumentById: function(record){
-        var me = this;
-        var url = '/api/document/' + record.get('_id');
-        Ext.Ajax.request({
-            method: 'GET',
-            url: url,
-            success: function (response) {
-                var text = response.responseText;
-                me.getLoginBtn().setHidden(false);
-                me.getNewDocumentBtn().setHidden(true);
-                me.getUserDocumentBtn().setHidden(true);
-                me.getLogoutBtn().setHidden(true);
-                localStorage.removeItem('userData');
-            },
-            error: function () {
-
-            }
-        })
+        window.location = '/api/document/' + record.get('_id') + '/download';
+//        var me = this;
+//        var url = '/api/document/' + record.get('_id') + '/download';
+//        Ext.Ajax.request({
+//            method: 'GET',
+//            url: url
+//
+//        })
 
     },
 

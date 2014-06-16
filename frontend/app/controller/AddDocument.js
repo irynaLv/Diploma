@@ -27,18 +27,30 @@ Ext.define('DL.controller.AddDocument', {
     },
 
     uploadNewDocument: function(data){
+        var userData = localStorage.getItem('userData');
+        if(userData){
+            var arr = userData.split('"');
+            var indexLastName = arr.indexOf('lastLame');
+            var lastName = arr[indexLastName+2];
+            var indexUserTitle = arr.indexOf('title');
+            var title = arr[indexUserTitle+2];
+        }
         Ext.Ajax.request({
             method: 'POST',
-            url: '/document/:id',
+            url: '/api/document',
             params: {
-                name: data.name,
+                fileName: data.name,
+                owner: lastName,
                 description : data.description,
                 type:data.type,
-                access : data.accessValue,
-                file: data.file
+                accessLayer : data.accessValue,
+                binaryFile: data.file,
+                title: title
             },
             success: function(response){
                 var text = response.responseText;
+                var data = JSON.parse(text);
+
             },
             error:function(){
 

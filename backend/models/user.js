@@ -54,7 +54,7 @@ UserSchema.methods.generateHash = function (password) {
 
 // checking if password is valid
 UserSchema.methods.validPassword = function (password) {
-    return true;
+    return this.password === password;
 };
 
 // create the model for users and expose it to our app

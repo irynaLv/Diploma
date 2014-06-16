@@ -7,8 +7,8 @@ Ext.define('DL.view.Main', {
     config: {
         layout: {
             type: 'vbox',
-            align: 'start',
-            pack: 'left'
+            align: 'start'
+
         },
         itemId: 'main',
         items: [

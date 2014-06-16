@@ -6,6 +6,14 @@ Ext.define('DL.view.RegistrationForm', {
     xtype: 'registration-form',
     alias: 'widget.registrationForm',
 
+    requires: [
+        'Ext.form.FieldSet',
+        'Ext.field.Email',
+        'Ext.field.Password',
+        'Ext.field.Select',
+        'Ext.field.DatePicker'
+    ],
+
     config: {
         emailValue: null,
         layout: {
@@ -36,11 +44,11 @@ Ext.define('DL.view.RegistrationForm', {
                         itemId: 'email'
 
                     },
-                    {
-                        xtype: 'emailfield',
-                        placeHolder: 'Повторіть email',
-                        itemId: 'checkEmail'
-                    },
+//                    {
+//                        xtype: 'emailfield',
+//                        placeHolder: 'Повторіть email',
+//                        itemId: 'checkEmail'
+//                    },
                     {
                         xtype: 'passwordfield',
                         placeHolder: 'Пароль',
@@ -215,7 +223,7 @@ Ext.define('DL.view.RegistrationForm', {
         var data = {
             name: name,
             surname: surname,
-            email: mail,
+            email: email,
             password: password,
             birthday: birthday,
             status: status,
@@ -236,7 +244,7 @@ Ext.define('DL.view.RegistrationForm', {
         var name = this.down("#name").getValue();
         var surname = this.down("#surname").getValue();
         var email = this.down("#email").getValue();
-        var checkEmail = this.down("#checkEmail").getValue();
+//        var checkEmail = this.down("#checkEmail").getValue();
         var password = this.down("#password").getValue();
         var checkPassword = this.down("#checkPassword").getValue();
         var birthday = this.down("#birthday").getValue();
@@ -248,11 +256,11 @@ Ext.define('DL.view.RegistrationForm', {
         }
         if(email != "" && this.validateEmail(email)){
 
-            if(email != checkEmail){
-                this.errorMsg.setHidden(false);
-                this.errorMsg.setHtml('Введіть коректний email адрес.');
-                return
-            }
+//            if(email != checkEmail){
+//                this.errorMsg.setHidden(false);
+//                this.errorMsg.setHtml('Введіть коректний email адрес.');
+//                return
+//            }
 
         } else{
             this.errorMsg.setHidden(false);

@@ -37,13 +37,16 @@
       }
       .login-btn{
       }
-      .user-document-btn, .add-document-btn{
+      .user-document-btn, .add-document-btn, .logout-btn{
         max-width: 3em;
 
         .x-button-icon{
           background-size: contain;
         }
 
+      }
+      .logout-btn{
+        //background-size: contain;
       }
 
     }

@@ -8,6 +8,7 @@ module.exports = function (app, passport) {
         }
 
         var query = Document.find({});
+        query.select('-md5 -MIMEType -binaryFile');
         if (req.query.from) {
             query.where('uploadDate').gte(req.query.from - 0);
         }
@@ -16,8 +17,8 @@ module.exports = function (app, passport) {
             query.where('uploadDate').lte(req.query.to - 0);
         }
 
-        if (req.query.type) {
-            query.where('type').equals(req.query.type);
+        if (req.query.types) {
+            query.where('type').in(req.query.types);
         }
 
         if (req.query.owner) {

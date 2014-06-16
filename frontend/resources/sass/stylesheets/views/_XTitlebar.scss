@@ -35,7 +35,16 @@
             }
          }
       }
-      .login-btn{
+      .user-document-btn{
+        &.pressed{
+          background-color: #ffb94b;
+          background-image: -webkit-gradient(linear, left top, left bottom, from(#C94700), to(#B84100));
+          background-image: -webkit-linear-gradient(top, #C94700, #B84100);
+          background-image: -moz-linear-gradient(top, #C94700, #B84100);
+          background-image: -ms-linear-gradient(top, #C94700, #B84100);
+          background-image: -o-linear-gradient(top, #C94700, #B84100);
+          background-image: linear-gradient(top, #C94700, #B84100);
+        }
       }
       .user-document-btn, .add-document-btn, .logout-btn{
         max-width: 3em;

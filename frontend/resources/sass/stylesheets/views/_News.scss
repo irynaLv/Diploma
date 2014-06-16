@@ -29,6 +29,8 @@
         height: 1.5em;
         width: 1.5em;
         background-size: contain;
+        position: absolute;
+        right: 0;
 
         &.not-owner{
           display: none;

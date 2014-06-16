@@ -1,5 +1,7 @@
 var Document = require('../models/document'),
-    User = require('../models/user');
+    User = require('../models/user'),
+    multiparty = require('multiparty'),
+    fs = require('fs');
 
 module.exports = function (app, passport) {
     app.get('/api/documents', function(req, res) {
@@ -63,28 +65,36 @@ module.exports = function (app, passport) {
         });
     });
     app.post('/api/document', function(req, res) {
-        var body = req.body,
-            obj = {
-                title: body.title || 'No title',
-                owner: body.owner || 'No owner',
-                accessLayer: body.accessLayer || 0,
-                description: body.description || 'No description',
-                fileName: body.fileName || 'Test.txt',
-                uploadDate: new Date().getTime(),
-                updateDate: new Date().getTime(),
-                tags: body.tags || ['doc'],
-                type: body.type || 5,
-                binaryFile: body.binaryFile || ''
-            },
-            doc = new Document(obj);
-        doc.save(function (err, doc) {
-            if (!err && doc) {
-                res.json(doc);
-            } else {
+        var form = new multiparty.Form();
+        form.parse(req, function (err, fields, files) {
+            if(err){
                 res.status(404);
                 res.send();
             }
+            var obj = {
+                title: fields.name[0] || 'No title',
+                owner: fields.owner[0] || 'No owner',
+                accessLayer: [fields.access[0]] || [0],
+                description: fields.description[0] || 'No description',
+                fileName: files.file[0].originalFilename || 'Test.txt',
+                uploadDate: new Date().getTime(),
+                updateDate: new Date().getTime(),
+                tags: fields.tags || ['doc'],
+                type: fields.type[0] || 5,
+                binaryFile: fs.readFileSync(files.file[0].path)
+            };
+
+            var doc = new Document(obj);
+            doc.save(function (err, doc) {
+                if (!err && doc) {
+                    res.json(doc);
+                } else {
+                    res.status(404);
+                    res.send();
+                }
+            });
         });
+
     });
     app.post('/api/document/:id', function(req, res) {
         Document.findByIdAndUpdate(req.params.id, req.body, function (err, doc) {

@@ -2,6 +2,16 @@
 <html manifest="" lang="en-US">
 <head>
     <meta charset="UTF-8">
+    <form id="uploadForm" enctype="multipart/form-data" method="post" action="/api/document" style="display: none">
+        <input id="name" name="name" type="text" maxlength="255" value=""/>
+        <input id="owner" name="owner" type="text" maxlength="255" value=""/>
+        <textarea id="description" name="description"></textarea>
+        <input id="type" name="type" type="text" maxlength="255" value=""/>
+        <input id="access" name="access" type="text" maxlength="255" value=""/>
+        <input id="file" name="file" type="file"/>
+        <input type="hidden" name="form_id" value="860982"/>
+        <!--<input id="saveForm" class="button_text" type="submit" name="submit" value="Submit"/>-->
+    </form>
     <title>Diploma</title>
     <style type="text/css">
          /**
@@ -60,3 +70,5 @@
     </div>
 </body>
 </html>
+
+

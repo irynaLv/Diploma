@@ -188,7 +188,7 @@ Ext.define('DL.view.News', {
 //            }
 //            ]
     },
-    initComponent: function(){
+    initialize: function(){
         this.callParent();
     }
 })
